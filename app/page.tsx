@@ -277,9 +277,9 @@ export default function Page() {
             className="flex justify-center lg:justify-end"
           >
             <motion.div
-              initial={{ opacity: 0, scale: 0.75, y: 40, rotate: -4 }}
-              animate={{ opacity: 1, scale: 1, y: 0, rotate: 0 }}
-              transition={{ duration: 0.9, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ opacity: 0, scale: 0.5, y: 80, rotate: -12, filter: 'blur(8px)' }}
+              animate={{ opacity: 1, scale: 1, y: 0, rotate: 0, filter: 'blur(0px)' }}
+              transition={{ duration: 1.1, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
               className="relative"
             >
               <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-navy/20 via-navy/5 to-transparent blur-sm" />
@@ -631,7 +631,7 @@ export default function Page() {
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.4, ease: 'easeOut' }}
-                className="relative rounded-2xl overflow-hidden aspect-[3/2]"
+                className="relative rounded-2xl overflow-hidden aspect-[3/2] max-w-sm mx-auto"
               >
                 <Image
                   src="/photos/photo-trustees.jpg"
