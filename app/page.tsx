@@ -66,21 +66,25 @@ interface ExperienceCardProps {
   role: string
   date: string
   bullets: string[]
+  logo?: React.ReactNode
 }
 
-function ExperienceCard({ label, org, role, date, bullets }: ExperienceCardProps) {
+function ExperienceCard({ label, org, role, date, bullets, logo }: ExperienceCardProps) {
   return (
     <div className="group rounded-2xl border border-black/[0.07] bg-surface p-7 md:p-9 hover:border-navy/20 hover:shadow-sm transition-all duration-300">
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
-        <div>
-          <div className="flex items-center gap-3 mb-1">
-            <span className="text-[10px] uppercase tracking-[0.24em] text-navy/50">{label}</span>
-            <span className="h-px w-8 bg-navy/20" />
+        <div className="flex items-start gap-4">
+          {logo && <div className="shrink-0 mt-1">{logo}</div>}
+          <div>
+            <div className="flex items-center gap-3 mb-1">
+              <span className="text-[10px] uppercase tracking-[0.24em] text-navy/50">{label}</span>
+              <span className="h-px w-8 bg-navy/20" />
+            </div>
+            <h3 className="font-heading text-2xl md:text-3xl font-medium text-foreground">
+              {org}
+            </h3>
+            <p className="text-muted mt-1 text-sm">{role}</p>
           </div>
-          <h3 className="font-heading text-2xl md:text-3xl font-medium text-foreground">
-            {org}
-          </h3>
-          <p className="text-muted mt-1 text-sm">{role}</p>
         </div>
         <span className="text-sm text-muted/70 shrink-0">{date}</span>
       </div>
@@ -189,7 +193,7 @@ export default function Page() {
               transition={{ duration: 0.6, delay: 0.28 }}
               className="text-lg text-muted leading-relaxed max-w-lg mb-10"
             >
-              Political Science graduate from UNC Wilmington. Twice-elected Student Body President representing 19,000+ students. Former Legislative Intern in the U.S. House of Representatives. Worked on a U.S. Senate campaign. Searching for law school and public policy opportunities.
+              Political Science graduate from UNC Wilmington. Twice-elected Student Body President representing 19,000+ students. Experience interning in the U.S. House of Representatives and working on a U.S. Senate campaign. Searching for public service and policy opportunities in Washington, D.C. or Raleigh, N.C.
             </motion.p>
 
             {/* Stats row */}
@@ -287,10 +291,35 @@ export default function Page() {
           <div className="space-y-6">
             <FadeIn delay={0.1}>
               <ExperienceCard
+                label="Current"
+                org="Nexus Strategies"
+                role="Political Research Assistant"
+                date="2026 – Present"
+                logo={
+                  <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-[#0D1B3E] text-white text-[11px] font-bold tracking-wider">
+                    NS
+                  </div>
+                }
+                bullets={[
+                  'Conduct in-depth research and analysis on state and local races across North Carolina, tracking political trends, candidate positioning, and electoral developments',
+                  'Monitor legislative, regulatory, and political developments related to energy policy, providing timely analysis and strategic insights for internal stakeholders',
+                  'Produce research memoranda, candidate profiles, district analyses, and briefing materials to support client engagement and strategic decision-making',
+                  'Analyze voting patterns, demographic trends, fundraising activity, and public policy developments to identify opportunities and risks across key North Carolina races',
+                ]}
+              />
+            </FadeIn>
+
+            <FadeIn delay={0.13}>
+              <ExperienceCard
                 label="Federal"
                 org="US House of Representatives"
                 role="Legislative Intern"
                 date="Summer 2025"
+                logo={
+                  <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-[#002868] text-white text-[10px] font-bold tracking-wide">
+                    HOR
+                  </div>
+                }
                 bullets={[
                   'Researched legislation and policy issues, preparing memos and briefs to inform congressional staff decision-making',
                   'Drafted and edited constituent correspondence on federal issues',
@@ -300,12 +329,17 @@ export default function Page() {
               />
             </FadeIn>
 
-            <FadeIn delay={0.13}>
+            <FadeIn delay={0.16}>
               <ExperienceCard
-                label="Recent"
+                label="Campaign"
                 org="NC Coordinated Campaign"
                 role="Campus Organizing Fellow"
                 date="April 2026 – May 2026"
+                logo={
+                  <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-[#1A4F9F] text-white text-[11px] font-bold tracking-wider">
+                    NC
+                  </div>
+                }
                 bullets={[
                   'Built relationships with student voters, campus organizations, and university stakeholders for a statewide coordinated campaign',
                   'Supported voter outreach through direct voter contact, event staffing, and voter education on a campus of over 19,000 students',
@@ -314,15 +348,22 @@ export default function Page() {
               />
             </FadeIn>
 
-            <FadeIn delay={0.16}>
+            <FadeIn delay={0.19}>
               <div className="group rounded-2xl border border-black/[0.07] bg-surface p-7 md:p-9 hover:border-navy/20 hover:shadow-sm transition-all duration-300">
-                <div className="flex items-center gap-3 mb-1">
-                  <span className="text-[10px] uppercase tracking-[0.24em] text-navy/50">Leadership</span>
-                  <span className="h-px w-8 bg-navy/20" />
+                <div className="flex items-start gap-4 mb-8">
+                  <div className="shrink-0 mt-1 flex items-center justify-center w-11 h-11 rounded-xl bg-[#006B6B] text-white text-[10px] font-bold tracking-wide">
+                    UNCW
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-3 mb-1">
+                      <span className="text-[10px] uppercase tracking-[0.24em] text-navy/50">Leadership</span>
+                      <span className="h-px w-8 bg-navy/20" />
+                    </div>
+                    <h3 className="font-heading text-2xl md:text-3xl font-medium text-foreground">
+                      UNCW Student Government
+                    </h3>
+                  </div>
                 </div>
-                <h3 className="font-heading text-2xl md:text-3xl font-medium text-foreground mb-8">
-                  UNCW Student Government
-                </h3>
 
                 {/* Student Body President */}
                 <div className="mb-7">
@@ -375,13 +416,18 @@ export default function Page() {
             <FadeIn delay={0.22}>
               <div className="rounded-2xl border border-black/[0.07] bg-surface p-6 hover:border-navy/20 hover:shadow-sm transition-all duration-300">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                  <div>
-                    <div className="flex items-center gap-3 mb-1">
-                      <span className="text-[10px] uppercase tracking-[0.24em] text-navy/50">Nonprofit · Volunteer</span>
-                      <span className="h-px w-6 bg-navy/20" />
+                  <div className="flex items-center gap-4">
+                    <div className="shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-[#2D7A4F] text-white text-[10px] font-bold tracking-wide">
+                      ES
                     </div>
-                    <h3 className="font-heading text-xl font-medium text-foreground">Endless Sports</h3>
-                    <p className="text-muted text-sm mt-0.5">Board Member — nonprofit providing athletic programs for the special needs community</p>
+                    <div>
+                      <div className="flex items-center gap-3 mb-1">
+                        <span className="text-[10px] uppercase tracking-[0.24em] text-navy/50">Nonprofit · Volunteer</span>
+                        <span className="h-px w-6 bg-navy/20" />
+                      </div>
+                      <h3 className="font-heading text-xl font-medium text-foreground">Endless Sports</h3>
+                      <p className="text-muted text-sm mt-0.5">Board Member — nonprofit providing athletic programs for the special needs community</p>
+                    </div>
                   </div>
                   <span className="text-sm text-muted/60 shrink-0">Dec 2021 – Present</span>
                 </div>
