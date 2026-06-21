@@ -189,7 +189,7 @@ export default function Page() {
               transition={{ duration: 0.6, delay: 0.28 }}
               className="text-lg text-muted leading-relaxed max-w-lg mb-10"
             >
-              Political Science graduate from UNC Wilmington. Twice-elected Student Body President representing 19,000+ students. Former Legislative Intern in the U.S. House of Representatives.
+              Political Science graduate from UNC Wilmington. Twice-elected Student Body President representing 19,000+ students. Former Legislative Intern in the U.S. House of Representatives. Worked on a U.S. Senate campaign. Searching for law school and public policy opportunities.
             </motion.p>
 
             {/* Stats row */}
