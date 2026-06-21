@@ -1,9 +1,29 @@
 'use client'
 
-import { motion, useInView } from 'framer-motion'
+import { motion, useInView, useMotionValue, useSpring, animate } from 'framer-motion'
 import { ArrowUpRight, Mail, ChevronDown } from 'lucide-react'
 import { useRef, useEffect, useState } from 'react'
 import Image from 'next/image'
+
+// ─── Animated counter ────────────────────────────────────────────────────────
+function AnimatedCounter({ value, suffix = '', decimals = 0 }: { value: number; suffix?: string; decimals?: number }) {
+  const ref = useRef<HTMLSpanElement>(null)
+  const inView = useInView(ref, { once: true, margin: '-40px' })
+  const count = useMotionValue(0)
+  const spring = useSpring(count, { duration: 1800, bounce: 0 })
+
+  useEffect(() => {
+    if (inView) animate(count, value, { duration: 1.8, ease: 'easeOut' })
+  }, [inView, value, count])
+
+  useEffect(() => {
+    return spring.on('change', (v) => {
+      if (ref.current) ref.current.textContent = v.toFixed(decimals) + suffix
+    })
+  }, [spring, decimals, suffix])
+
+  return <span ref={ref}>0{suffix}</span>
+}
 
 function LinkedinIcon({ className }: { className?: string }) {
   return (
@@ -203,16 +223,24 @@ export default function Page() {
               transition={{ duration: 0.6, delay: 0.36 }}
               className="flex flex-wrap gap-8 mb-10"
             >
-              {[
-                { value: '3.565', label: 'GPA' },
-                { value: '2×', label: 'Elected' },
-                { value: '19K+', label: 'Students' },
-              ].map((stat) => (
-                <div key={stat.label} className="flex flex-col">
-                  <span className="font-heading text-3xl font-semibold text-navy">{stat.value}</span>
-                  <span className="text-xs uppercase tracking-[0.2em] text-muted mt-0.5">{stat.label}</span>
-                </div>
-              ))}
+              <div className="flex flex-col">
+                <span className="font-heading text-3xl font-semibold text-navy">
+                  <AnimatedCounter value={3.565} decimals={3} />
+                </span>
+                <span className="text-xs uppercase tracking-[0.2em] text-muted mt-0.5">GPA</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="font-heading text-3xl font-semibold text-navy">
+                  <AnimatedCounter value={2} suffix="×" />
+                </span>
+                <span className="text-xs uppercase tracking-[0.2em] text-muted mt-0.5">Elected</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="font-heading text-3xl font-semibold text-navy">
+                  <AnimatedCounter value={19} suffix="K+" />
+                </span>
+                <span className="text-xs uppercase tracking-[0.2em] text-muted mt-0.5">Students</span>
+              </div>
             </motion.div>
 
             {/* CTAs */}
@@ -248,7 +276,11 @@ export default function Page() {
             transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="flex justify-center lg:justify-end"
           >
-            <div className="relative">
+            <motion.div
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+              className="relative"
+            >
               <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-navy/20 via-navy/5 to-transparent blur-sm" />
               <div className="relative w-72 h-72 md:w-80 md:h-80 rounded-full overflow-hidden border border-navy/[0.12]">
                 <Image
@@ -259,7 +291,7 @@ export default function Page() {
                   priority
                 />
               </div>
-            </div>
+            </motion.div>
           </motion.div>
 
           </div>
@@ -552,44 +584,64 @@ export default function Page() {
 
         {/* ── CONTACT ─────────────────────────────────────────────────────── */}
         <section id="contact" className="py-8 pb-32">
-          <FadeIn>
-            <SectionLabel>Contact</SectionLabel>
-            <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-light text-foreground mb-6 max-w-2xl">
-              Let&apos;s connect.
-            </h2>
-            <p className="text-foreground/55 max-w-md mb-12 leading-relaxed">
-              Political Science graduate from UNCW, currently doing political research at Nexus Strategies. Searching for public service and policy opportunities in Washington, D.C. or Raleigh, N.C. Happy to connect.
-            </p>
-          </FadeIn>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <FadeIn>
+                <SectionLabel>Contact</SectionLabel>
+                <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-light text-foreground mb-6 max-w-2xl">
+                  Let&apos;s connect.
+                </h2>
+                <p className="text-foreground/55 max-w-md mb-12 leading-relaxed">
+                  Political Science graduate from UNCW, currently doing political research at Nexus Strategies. Searching for public service and policy opportunities in Washington, D.C. or Raleigh, N.C. Happy to connect.
+                </p>
+              </FadeIn>
 
-          <FadeIn delay={0.1}>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href="https://www.linkedin.com/in/skylerstein"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-3 rounded-2xl border border-navy/20 bg-navy/[0.05] px-8 py-5 text-foreground hover:border-navy/40 hover:bg-navy/[0.08] transition-all duration-200 group"
-              >
-                <LinkedinIcon className="h-5 w-5 text-navy" />
-                <div>
-                  <p className="text-sm font-medium">LinkedIn</p>
-                  <p className="text-xs text-muted">linkedin.com/in/skylerstein</p>
+              <FadeIn delay={0.1}>
+                <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-4">
+                  <a
+                    href="https://www.linkedin.com/in/skylerstein"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-3 rounded-2xl border border-navy/20 bg-navy/[0.05] px-8 py-5 text-foreground hover:border-navy/40 hover:bg-navy/[0.08] transition-all duration-200 group"
+                  >
+                    <LinkedinIcon className="h-5 w-5 text-navy" />
+                    <div>
+                      <p className="text-sm font-medium">LinkedIn</p>
+                      <p className="text-xs text-muted">linkedin.com/in/skylerstein</p>
+                    </div>
+                    <ArrowUpRight className="h-4 w-4 text-muted ml-auto group-hover:text-navy transition-colors" />
+                  </a>
+                  <a
+                    href="mailto:skylerstein22@gmail.com"
+                    className="inline-flex items-center gap-3 rounded-2xl border border-black/[0.08] bg-surface px-8 py-5 text-foreground hover:border-navy/20 hover:shadow-sm transition-all duration-200 group"
+                  >
+                    <Mail className="h-5 w-5 text-navy" />
+                    <div>
+                      <p className="text-sm font-medium">Email</p>
+                      <p className="text-xs text-muted">skylerstein22@gmail.com</p>
+                    </div>
+                    <ArrowUpRight className="h-4 w-4 text-muted ml-auto group-hover:text-navy transition-colors" />
+                  </a>
                 </div>
-                <ArrowUpRight className="h-4 w-4 text-muted ml-auto group-hover:text-navy transition-colors" />
-              </a>
-              <a
-                href="mailto:skylerstein22@gmail.com"
-                className="inline-flex items-center gap-3 rounded-2xl border border-black/[0.08] bg-surface px-8 py-5 text-foreground hover:border-navy/20 hover:shadow-sm transition-all duration-200 group"
-              >
-                <Mail className="h-5 w-5 text-navy" />
-                <div>
-                  <p className="text-sm font-medium">Email</p>
-                  <p className="text-xs text-muted">skylerstein22@gmail.com</p>
-                </div>
-                <ArrowUpRight className="h-4 w-4 text-muted ml-auto group-hover:text-navy transition-colors" />
-              </a>
+              </FadeIn>
             </div>
-          </FadeIn>
+
+            <FadeIn delay={0.15}>
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.4, ease: 'easeOut' }}
+                className="relative rounded-2xl overflow-hidden aspect-[3/4]"
+              >
+                <Image
+                  src="/photos/photo-grad.jpg"
+                  alt="Skyler Stein at UNCW graduation"
+                  fill
+                  className="object-cover object-center"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/30 via-transparent to-transparent" />
+              </motion.div>
+            </FadeIn>
+          </div>
         </section>
 
       </div>
