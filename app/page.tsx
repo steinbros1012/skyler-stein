@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion'
 import { ArrowUpRight, Mail, ChevronDown } from 'lucide-react'
 import { useRef, useEffect, useState } from 'react'
+import Image from 'next/image'
 
 function LinkedinIcon({ className }: { className?: string }) {
   return (
@@ -153,8 +154,10 @@ export default function Page() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-[radial-gradient(circle,rgba(27,58,107,0.05),transparent_65%)] blur-3xl pointer-events-none" />
 
         <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-10 pt-32 pb-24 w-full">
-          <div className="max-w-2xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
+          {/* Left — text */}
+          <div>
             {/* Badge */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
@@ -232,6 +235,29 @@ export default function Page() {
                 skylerstein22@gmail.com
               </a>
             </motion.div>
+          </div>
+
+          {/* Right — headshot */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.97 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="flex justify-center lg:justify-end"
+          >
+            <div className="relative">
+              <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-navy/20 via-navy/5 to-transparent blur-sm" />
+              <div className="relative w-72 h-72 md:w-80 md:h-80 rounded-full overflow-hidden border border-navy/[0.12]">
+                <Image
+                  src="/headshot.jpg"
+                  alt="Skyler Stein"
+                  fill
+                  className="object-cover object-top"
+                  priority
+                />
+              </div>
+            </div>
+          </motion.div>
+
           </div>
 
           {/* Scroll cue */}
