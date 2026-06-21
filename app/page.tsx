@@ -352,13 +352,13 @@ export default function Page() {
             <FadeIn delay={0.1}>
               <div className="space-y-5 text-foreground/70 leading-relaxed pt-8 lg:pt-16">
                 <p>
-                  I went to UNCW thinking I would just study political science. Freshman year I ran for Student Body Vice President and won. The next year I ran for President. Then I ran again and won a second term. That was not really the plan but it turned out to be a pretty good use of my time.
+                  I went to UNCW for political science and ended up becoming Student Body Vice President freshman year, then President, then got reelected. Four years in, I have spent most of college in some form of elected or appointed leadership.
                 </p>
                 <p>
-                  Between representing 19,000 students on campus, serving on the Board of Trustees, and spending a summer in Washington working in a congressional office, I have spent most of college in rooms where decisions get made. That is where I want to be long term.
+                  Between representing 19,000 students on campus, serving on the Board of Trustees, and spending a summer in Washington working in a congressional office, I have been in rooms where decisions get made. That is where I want to be long term.
                 </p>
                 <p className="text-foreground font-medium">
-                  I am finishing my degree in August 2026 and looking at law school and policy-focused opportunities. If you want to talk, reach out.
+                  I graduated from UNCW in May 2026 and am looking at law school and policy-focused opportunities. If you want to talk, reach out.
                 </p>
               </div>
             </FadeIn>
@@ -383,7 +383,7 @@ export default function Page() {
                   <div>
                     <h3 className="font-heading text-2xl font-medium text-foreground">UNC Wilmington</h3>
                     <p className="text-muted mt-1 text-sm">BA Political Science · Minor: Pre-Law</p>
-                    <p className="text-muted/60 text-sm">Expected August 2026</p>
+                    <p className="text-muted/60 text-sm">Expected May 2026</p>
                   </div>
                   <span className="font-heading text-3xl font-semibold text-navy">3.565</span>
                 </div>
@@ -391,7 +391,7 @@ export default function Page() {
                   {[
                     "Dean's List — Fall 2022, Spring 2023, Fall 2024, Spring 2025",
                     'BA Political Science with Pre-Law minor',
-                    'Graduating August 2026',
+                    'Graduating May 2026',
                   ].map((item) => (
                     <div key={item} className="flex gap-3 text-sm text-foreground/65">
                       <span className="text-navy/40 shrink-0">·</span>
@@ -438,7 +438,7 @@ export default function Page() {
               Let&apos;s connect.
             </h2>
             <p className="text-foreground/55 max-w-md mb-12 leading-relaxed">
-              Finishing at UNCW in August 2026 and open to law school and public policy opportunities. Happy to connect.
+              Finishing at UNCW in May 2026 and open to law school and public policy opportunities. Happy to connect.
             </p>
           </FadeIn>
 
