@@ -412,26 +412,25 @@ export default function Page() {
               </div>
             </FadeIn>
 
-            {/* Endless Sports — smaller card */}
+            {/* Endless Sports */}
             <FadeIn delay={0.22}>
-              <div className="rounded-2xl border border-black/[0.07] bg-surface p-6 hover:border-navy/20 hover:shadow-sm transition-all duration-300">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                  <div className="flex items-center gap-4">
-                    <div className="shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-white border border-black/[0.08] overflow-hidden p-0.5">
-                      <img src="/logos/endless-sports.png" alt="Endless Sports" className="w-full h-full object-contain" />
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-3 mb-1">
-                        <span className="text-[10px] uppercase tracking-[0.24em] text-navy/50">Nonprofit · Volunteer</span>
-                        <span className="h-px w-6 bg-navy/20" />
-                      </div>
-                      <h3 className="font-heading text-xl font-medium text-foreground">Endless Sports</h3>
-                      <p className="text-muted text-sm mt-0.5">Board Member — nonprofit providing athletic programs for the special needs community</p>
-                    </div>
+              <ExperienceCard
+                label="Nonprofit · Volunteer"
+                org="Endless Sports"
+                role="Board Member"
+                date="Dec 2021 – Present"
+                logo={
+                  <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-white border border-black/[0.08] overflow-hidden p-0.5">
+                    <img src="/logos/endless-sports.png" alt="Endless Sports" className="w-full h-full object-contain" />
                   </div>
-                  <span className="text-sm text-muted/60 shrink-0">Dec 2021 – Present</span>
-                </div>
-              </div>
+                }
+                bullets={[
+                  'Serve on the board of a nonprofit dedicated to providing athletic programs and recreational opportunities for individuals with special needs',
+                  'Handle email correspondence on behalf of the organization, coordinating with volunteers, partners, and community members',
+                  'Assist with social media content to promote events, share participant stories, and grow the organization\'s community presence',
+                  'Support weekly events and athletic programs, helping ensure participants have a positive and inclusive experience',
+                ]}
+              />
             </FadeIn>
           </div>
         </section>
