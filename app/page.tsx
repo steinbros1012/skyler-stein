@@ -349,11 +349,7 @@ export default function Page() {
             </FadeIn>
 
             <FadeIn delay={0.19}>
-              <div className="group rounded-2xl border border-black/[0.07] bg-surface overflow-hidden hover:border-navy/20 hover:shadow-sm transition-all duration-300">
-                <div className="w-full aspect-[3/2] overflow-hidden">
-                  <Image src="/photos/photo-trustees.jpg" alt="Skyler presenting at UNCW Board of Trustees meeting" width={1400} height={933} className="w-full h-full object-cover object-top" />
-                </div>
-                <div className="p-7 md:p-9">
+              <div className="group rounded-2xl border border-black/[0.07] bg-surface p-7 md:p-9 hover:border-navy/20 hover:shadow-sm transition-all duration-300">
                 <div className="flex items-start gap-4 mb-8">
                   <div className="shrink-0 mt-1 flex items-center justify-center w-11 h-11 rounded-xl bg-white border border-black/[0.08] overflow-hidden p-1">
                     <img src="/logos/uncw.svg" alt="UNCW" className="w-full h-full object-contain" />
@@ -412,7 +408,6 @@ export default function Page() {
                       </li>
                     ))}
                   </ul>
-                </div>
                 </div>
               </div>
             </FadeIn>
