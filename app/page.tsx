@@ -287,10 +287,10 @@ export default function Page() {
           <div className="space-y-6">
             <FadeIn delay={0.1}>
               <ExperienceCard
-                label="Current · Leadership"
+                label="Leadership"
                 org="UNCW Student Government"
                 role="Student Body President (Reelected)"
-                date="April 2024 – Present"
+                date="April 2024 – April 2026"
                 bullets={[
                   'Twice elected by the student body as Student Body President at UNCW, representing over 19,000 students',
                   'Chair of the Association of Student Governments (ASG) Council of Student Body Presidents, reelected to this position as well',
@@ -372,7 +372,7 @@ export default function Page() {
             <FadeIn>
               <SectionLabel>About</SectionLabel>
               <h2 className="font-heading text-4xl md:text-5xl font-light text-foreground mb-8">
-                Not really the plan, but a pretty good use of time.
+                Four years in rooms where decisions get made.
               </h2>
             </FadeIn>
             <FadeIn delay={0.1}>
@@ -409,15 +409,15 @@ export default function Page() {
                   <div>
                     <h3 className="font-heading text-2xl font-medium text-foreground">UNC Wilmington</h3>
                     <p className="text-muted mt-1 text-sm">BA Political Science · Minor: Pre-Law</p>
-                    <p className="text-muted/60 text-sm">Expected May 2026</p>
+                    <p className="text-muted/60 text-sm">Cum Laude · Graduated May 2026</p>
                   </div>
                   <span className="font-heading text-3xl font-semibold text-navy">3.565</span>
                 </div>
                 <div className="space-y-2">
                   {[
-                    "Dean's List — Fall 2022, Spring 2023, Fall 2024, Spring 2025",
-                    'BA Political Science with Pre-Law minor',
-                    'Graduating May 2026',
+                    "Dean's List — Fall 2022, Spring 2023, Fall 2024, Spring 2025, Spring 2026",
+                    'Cum Laude',
+                    'Relevant coursework: Constitutional Law I & II, Legal Philosophy & Jurisprudence, Judicial Politics, Public Policy Analysis, International Relations, Political Theory',
                   ].map((item) => (
                     <div key={item} className="flex gap-3 text-sm text-foreground/65">
                       <span className="text-navy/40 shrink-0">·</span>
