@@ -449,16 +449,19 @@ export default function Page() {
             <FadeIn delay={0.1}>
               <div className="space-y-5 text-foreground/70 leading-relaxed pt-8 lg:pt-16">
                 <p>
-                  I grew up in Apex, NC, a small town outside of Raleigh. Politics was always around. I paid attention to it growing up and by the time I got to UNCW I knew that was the direction I wanted to go.
+                  Skyler grew up in Apex, NC, a small town outside of Raleigh. He was drawn to politics and public service from an early age, and chose to study Political Science at UNC Wilmington with a Pre-Law minor, graduating Cum Laude in May 2026.
                 </p>
                 <p>
-                  Freshman year I ran for Student Body Vice President and won. Then I ran for President. Then I ran again and won again. Four years at UNCW, and most of it was spent in some kind of elected role. I represented over 19,000 students, sat as a voting member on the Board of Trustees, and chaired the Association of Student Governments Council of Student Body Presidents statewide. I genuinely like governing and I got decent at it.
+                  At UNCW, Skyler got involved quickly. He was elected Student Body Vice President his freshman year, then Student Body President, and was reelected to that role the following year. It was not something he expected when he arrived on campus, and he tried not to take it for granted. Over four years he represented over 19,000 students, served as a voting member on the Board of Trustees, and chaired the statewide Association of Student Governments Council of Student Body Presidents. He learned a lot from the job and from the people around him.
                 </p>
                 <p>
-                  The summer of 2025 I interned in a congressional office in Washington, attended committee hearings, drafted constituent correspondence, and saw up close how federal policy actually works. After that I came back to North Carolina and worked on a statewide Senate campaign before starting at Nexus Strategies, where I do political research on races and policy across the state.
+                  Outside of student government, Skyler has served on the board of Endless Sports, a nonprofit that provides athletic programs and recreational opportunities for individuals with special needs. It has been one of the more meaningful things he has been a part of and something he hopes to stay involved in long term.
+                </p>
+                <p>
+                  The summer of 2025 he interned in a congressional office in Washington, D.C., where he attended committee hearings, helped with constituent correspondence, and got a ground-level look at how federal policy moves. After returning to North Carolina he worked on a statewide Senate campaign before joining Nexus Strategies, where he does political research on races and policy developments across the state.
                 </p>
                 <p className="text-foreground font-medium">
-                  I graduated from UNCW Cum Laude in May 2026 with a degree in Political Science and a Pre-Law minor. I am looking for work in public service and policy, whether that is a government office, a think tank, or something that leads toward law school down the road. If that sounds like a fit, reach out.
+                  Skyler is looking for opportunities in public service and policy, whether that is a government office, a policy organization, or a role that points toward law school somewhere down the road. He is based in North Carolina but open to Washington, D.C. If you think there might be a fit, he would be glad to connect.
                 </p>
               </div>
             </FadeIn>
