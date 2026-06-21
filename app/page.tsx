@@ -535,7 +535,7 @@ export default function Page() {
               Let&apos;s connect.
             </h2>
             <p className="text-foreground/55 max-w-md mb-12 leading-relaxed">
-              Finishing at UNCW in May 2026 and open to law school and public policy opportunities. Happy to connect.
+              Political Science graduate from UNCW, currently doing political research at Nexus Strategies. Searching for public service and policy opportunities in Washington, D.C. or Raleigh, N.C. Happy to connect.
             </p>
           </FadeIn>
 
