@@ -167,7 +167,7 @@ export default function Page() {
             >
               <span className="h-1.5 w-1.5 rounded-full bg-navy/60 animate-pulse" />
               <span className="text-[11px] uppercase tracking-[0.26em] text-navy/70">
-                Open to Law School &amp; Policy Opportunities
+                Searching for Law School &amp; Policy Opportunities
               </span>
             </motion.div>
 
@@ -189,7 +189,7 @@ export default function Page() {
               transition={{ duration: 0.6, delay: 0.28 }}
               className="text-lg text-muted leading-relaxed max-w-lg mb-10"
             >
-              Political Science student at UNC Wilmington. Twice-elected Student Body President representing 19,000+ students. Former Legislative Intern in the U.S. House of Representatives.
+              Political Science graduate from UNC Wilmington. Twice-elected Student Body President representing 19,000+ students. Former Legislative Intern in the U.S. House of Representatives.
             </motion.p>
 
             {/* Stats row */}
