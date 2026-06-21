@@ -13,7 +13,7 @@ function AnimatedCounter({ value, suffix = '', decimals = 0 }: { value: number; 
   const spring = useSpring(count, { duration: 1800, bounce: 0 })
 
   useEffect(() => {
-    if (inView) animate(count, value, { duration: 1.8, ease: 'easeOut' })
+    if (inView) animate(count, value, { duration: 0.9, ease: 'easeOut' })
   }, [inView, value, count])
 
   useEffect(() => {
@@ -277,8 +277,9 @@ export default function Page() {
             className="flex justify-center lg:justify-end"
           >
             <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+              initial={{ opacity: 0, scale: 0.75, y: 40, rotate: -4 }}
+              animate={{ opacity: 1, scale: 1, y: 0, rotate: 0 }}
+              transition={{ duration: 0.9, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
               className="relative"
             >
               <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-navy/20 via-navy/5 to-transparent blur-sm" />
@@ -630,13 +631,13 @@ export default function Page() {
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.4, ease: 'easeOut' }}
-                className="relative rounded-2xl overflow-hidden aspect-[3/4]"
+                className="relative rounded-2xl overflow-hidden aspect-[3/2]"
               >
                 <Image
-                  src="/photos/photo-grad.jpg"
-                  alt="Skyler Stein at UNCW graduation"
+                  src="/photos/photo-trustees.jpg"
+                  alt="Skyler speaking at UNCW Board of Trustees"
                   fill
-                  className="object-cover object-center"
+                  className="object-cover object-top"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy/30 via-transparent to-transparent" />
               </motion.div>
