@@ -296,8 +296,8 @@ export default function Page() {
                 role="Political Research Assistant"
                 date="2026 – Present"
                 logo={
-                  <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-[#0D1B3E] text-white text-[11px] font-bold tracking-wider">
-                    NS
+                  <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-white border border-black/[0.08] overflow-hidden">
+                    <img src="/logos/nexus.png" alt="Nexus Strategies" className="w-full h-full object-cover" />
                   </div>
                 }
                 bullets={[
@@ -316,8 +316,8 @@ export default function Page() {
                 role="Legislative Intern"
                 date="Summer 2025"
                 logo={
-                  <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-[#002868] text-white text-[10px] font-bold tracking-wide">
-                    HOR
+                  <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-white border border-black/[0.08] overflow-hidden p-0.5">
+                    <img src="/logos/house.svg" alt="US House of Representatives" className="w-full h-full object-contain" />
                   </div>
                 }
                 bullets={[
@@ -336,8 +336,8 @@ export default function Page() {
                 role="Campus Organizing Fellow"
                 date="April 2026 – May 2026"
                 logo={
-                  <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-[#1A4F9F] text-white text-[11px] font-bold tracking-wider">
-                    NC
+                  <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-white border border-black/[0.08] overflow-hidden p-0.5">
+                    <img src="/logos/nc-campaign.svg" alt="NC Coordinated Campaign" className="w-full h-full object-contain" />
                   </div>
                 }
                 bullets={[
@@ -351,8 +351,8 @@ export default function Page() {
             <FadeIn delay={0.19}>
               <div className="group rounded-2xl border border-black/[0.07] bg-surface p-7 md:p-9 hover:border-navy/20 hover:shadow-sm transition-all duration-300">
                 <div className="flex items-start gap-4 mb-8">
-                  <div className="shrink-0 mt-1 flex items-center justify-center w-11 h-11 rounded-xl bg-[#006B6B] text-white text-[10px] font-bold tracking-wide">
-                    UNCW
+                  <div className="shrink-0 mt-1 flex items-center justify-center w-11 h-11 rounded-xl bg-white border border-black/[0.08] overflow-hidden p-1">
+                    <img src="/logos/uncw.svg" alt="UNCW" className="w-full h-full object-contain" />
                   </div>
                   <div>
                     <div className="flex items-center gap-3 mb-1">
@@ -417,8 +417,8 @@ export default function Page() {
               <div className="rounded-2xl border border-black/[0.07] bg-surface p-6 hover:border-navy/20 hover:shadow-sm transition-all duration-300">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                   <div className="flex items-center gap-4">
-                    <div className="shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-[#2D7A4F] text-white text-[10px] font-bold tracking-wide">
-                      ES
+                    <div className="shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-white border border-black/[0.08] overflow-hidden p-0.5">
+                      <img src="/logos/endless-sports.png" alt="Endless Sports" className="w-full h-full object-contain" />
                     </div>
                     <div>
                       <div className="flex items-center gap-3 mb-1">
