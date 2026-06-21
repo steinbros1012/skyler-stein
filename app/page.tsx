@@ -287,16 +287,15 @@ export default function Page() {
           <div className="space-y-6">
             <FadeIn delay={0.1}>
               <ExperienceCard
-                label="Leadership"
-                org="UNCW Student Government"
-                role="Student Body President (Reelected)"
-                date="April 2024 – April 2026"
+                label="Federal"
+                org="US House of Representatives"
+                role="Legislative Intern"
+                date="Summer 2025"
                 bullets={[
-                  'Twice elected by the student body as Student Body President at UNCW, representing over 19,000 students',
-                  'Chair of the Association of Student Governments (ASG) Council of Student Body Presidents, reelected to this position as well',
-                  'Ex-Officio Voting Member of the UNCW Board of Trustees, providing the student perspective on institutional decisions',
-                  'Serves on the UNCW Alumni Association Board of Directors, connecting current students with the broader UNCW community',
-                  'Advocated across Student Success, Institutional Effectiveness, Academic Affairs, and Sustainability',
+                  'Researched legislation and policy issues, preparing memos and briefs to inform congressional staff decision-making',
+                  'Drafted and edited constituent correspondence on federal issues',
+                  'Attended committee hearings, briefings, and floor proceedings, summarizing key takeaways',
+                  'Conducted Capitol tours and aided visiting constituents',
                 ]}
               />
             </FadeIn>
@@ -316,33 +315,60 @@ export default function Page() {
             </FadeIn>
 
             <FadeIn delay={0.16}>
-              <ExperienceCard
-                label="Federal"
-                org="US House of Representatives"
-                role="Legislative Intern"
-                date="Summer 2025"
-                bullets={[
-                  'Researched legislation and policy issues, preparing memos and briefs to inform congressional staff decision-making',
-                  'Drafted and edited constituent correspondence on federal issues',
-                  'Attended committee hearings, briefings, and floor proceedings, summarizing key takeaways',
-                  'Conducted Capitol tours and aided visiting constituents',
-                ]}
-              />
-            </FadeIn>
+              <div className="group rounded-2xl border border-black/[0.07] bg-surface p-7 md:p-9 hover:border-navy/20 hover:shadow-sm transition-all duration-300">
+                <div className="flex items-center gap-3 mb-1">
+                  <span className="text-[10px] uppercase tracking-[0.24em] text-navy/50">Leadership</span>
+                  <span className="h-px w-8 bg-navy/20" />
+                </div>
+                <h3 className="font-heading text-2xl md:text-3xl font-medium text-foreground mb-8">
+                  UNCW Student Government
+                </h3>
 
-            <FadeIn delay={0.19}>
-              <ExperienceCard
-                label="Leadership"
-                org="UNCW Student Government"
-                role="Student Body Vice President"
-                date="April 2023 – April 2024"
-                bullets={[
-                  'Elected Student Body Vice President and President of the Senate',
-                  'Led a team of over 50 student leaders managing the Student Senate and Senatorial Board',
-                  'Served as Tri-Chair of the Campus Initiated Tuition and Fee Advisory Committee (CITI)',
-                  'Collaborated with the Student Body President on campus-wide initiatives including the Seahawk Swap Shop',
-                ]}
-              />
+                {/* Student Body President */}
+                <div className="mb-7">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-4">
+                    <p className="text-muted text-sm font-medium">Student Body President (Reelected)</p>
+                    <span className="text-sm text-muted/70 shrink-0">April 2024 – April 2026</span>
+                  </div>
+                  <ul className="space-y-3 text-foreground/70 text-sm leading-relaxed">
+                    {[
+                      'Twice elected by the student body as Student Body President at UNCW, representing over 19,000 students',
+                      'Chair of the Association of Student Governments (ASG) Council of Student Body Presidents, reelected to this position as well',
+                      'Ex-Officio Voting Member of the UNCW Board of Trustees, providing the student perspective on institutional decisions',
+                      'Serves on the UNCW Alumni Association Board of Directors, connecting current students with the broader UNCW community',
+                      'Advocated across Student Success, Institutional Effectiveness, Academic Affairs, and Sustainability',
+                    ].map((bullet, i) => (
+                      <li key={i} className="flex gap-3">
+                        <span className="text-navy/40 mt-0.5 shrink-0">·</span>
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="h-px w-full bg-black/[0.06] mb-7" />
+
+                {/* Student Body Vice President */}
+                <div>
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-4">
+                    <p className="text-muted text-sm font-medium">Student Body Vice President</p>
+                    <span className="text-sm text-muted/70 shrink-0">April 2023 – April 2024</span>
+                  </div>
+                  <ul className="space-y-3 text-foreground/70 text-sm leading-relaxed">
+                    {[
+                      'Elected Student Body Vice President and President of the Senate',
+                      'Led a team of over 50 student leaders managing the Student Senate and Senatorial Board',
+                      'Served as Tri-Chair of the Campus Initiated Tuition and Fee Advisory Committee (CITI)',
+                      'Collaborated with the Student Body President on campus-wide initiatives including the Seahawk Swap Shop',
+                    ].map((bullet, i) => (
+                      <li key={i} className="flex gap-3">
+                        <span className="text-navy/40 mt-0.5 shrink-0">·</span>
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </FadeIn>
 
             {/* Endless Sports — smaller card */}
