@@ -449,16 +449,16 @@ export default function Page() {
             <FadeIn delay={0.1}>
               <div className="space-y-5 text-foreground/70 leading-relaxed pt-8 lg:pt-16">
                 <p>
-                  I grew up in Raleigh, North Carolina — a city shaped by politics, policy, and the constant hum of people trying to move the state forward. That environment got into me early. By the time I arrived at UNC Wilmington as a freshman, I already knew I wanted to be somewhere decisions were being made, not just observed.
+                  I grew up in Apex, NC, a small town outside of Raleigh. Politics was always around. I paid attention to it growing up and by the time I got to UNCW I knew that was the direction I wanted to go.
                 </p>
                 <p>
-                  I ran for Student Body Vice President that first year and won. Then Student Body President. Then got reelected. Four years at UNCW, and nearly all of them were spent in some form of elected leadership — representing over 19,000 students, sitting as a voting member of the Board of Trustees, and chairing the statewide Association of Student Governments Council of Student Body Presidents. Governing is something I genuinely enjoy, and I got good at it.
+                  Freshman year I ran for Student Body Vice President and won. Then I ran for President. Then I ran again and won again. Four years at UNCW, and most of it was spent in some kind of elected role. I represented over 19,000 students, sat as a voting member on the Board of Trustees, and chaired the Association of Student Governments Council of Student Body Presidents statewide. I genuinely like governing and I got decent at it.
                 </p>
                 <p>
-                  That same drive brought me to Washington the summer of 2025, interning in a congressional office, attending committee hearings, drafting constituent correspondence, and getting a close look at how federal policy actually moves. Back in North Carolina, I worked on a statewide coordinated Senate campaign and now do political research at Nexus Strategies — tracking races, analyzing policy developments, and producing the kind of work that helps campaigns and clients make smarter decisions.
+                  The summer of 2025 I interned in a congressional office in Washington, attended committee hearings, drafted constituent correspondence, and saw up close how federal policy actually works. After that I came back to North Carolina and worked on a statewide Senate campaign before starting at Nexus Strategies, where I do political research on races and policy across the state.
                 </p>
                 <p className="text-foreground font-medium">
-                  I graduated from UNCW Cum Laude in May 2026 with a degree in Political Science and a Pre-Law minor. My goals are in public service and policy — whether that is a government office, a think tank, or eventually law school. I want to spend my career in rooms where the work matters. If that sounds like somewhere you work, I would like to hear from you.
+                  I graduated from UNCW Cum Laude in May 2026 with a degree in Political Science and a Pre-Law minor. I am looking for work in public service and policy, whether that is a government office, a think tank, or something that leads toward law school down the road. If that sounds like a fit, reach out.
                 </p>
               </div>
             </FadeIn>
