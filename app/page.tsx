@@ -349,7 +349,11 @@ export default function Page() {
             </FadeIn>
 
             <FadeIn delay={0.19}>
-              <div className="group rounded-2xl border border-black/[0.07] bg-surface p-7 md:p-9 hover:border-navy/20 hover:shadow-sm transition-all duration-300">
+              <div className="group rounded-2xl border border-black/[0.07] bg-surface overflow-hidden hover:border-navy/20 hover:shadow-sm transition-all duration-300">
+                <div className="w-full aspect-[16/7] overflow-hidden">
+                  <Image src="/photos/photo-trustees.jpg" alt="Skyler presenting at UNCW Board of Trustees meeting" width={1400} height={613} className="w-full h-full object-cover object-top" />
+                </div>
+                <div className="p-7 md:p-9">
                 <div className="flex items-start gap-4 mb-8">
                   <div className="shrink-0 mt-1 flex items-center justify-center w-11 h-11 rounded-xl bg-white border border-black/[0.08] overflow-hidden p-1">
                     <img src="/logos/uncw.svg" alt="UNCW" className="w-full h-full object-contain" />
@@ -409,6 +413,7 @@ export default function Page() {
                     ))}
                   </ul>
                 </div>
+                </div>
               </div>
             </FadeIn>
 
@@ -445,6 +450,18 @@ export default function Page() {
               <h2 className="font-heading text-4xl md:text-5xl font-light text-foreground mb-8">
                 Four years in rooms where decisions get made.
               </h2>
+              {/* Photo grid */}
+              <div className="grid grid-cols-2 gap-3 mt-6">
+                <div className="col-span-2 rounded-xl overflow-hidden aspect-[16/9]">
+                  <Image src="/photos/photo-convocation.jpg" alt="Skyler addressing students at UNCW convocation" width={1400} height={788} className="w-full h-full object-cover" />
+                </div>
+                <div className="rounded-xl overflow-hidden aspect-[4/3]">
+                  <Image src="/photos/photo-board.jpg" alt="Skyler speaking at UNCW Board of Trustees" width={700} height={525} className="w-full h-full object-cover" />
+                </div>
+                <div className="rounded-xl overflow-hidden aspect-[4/3]">
+                  <Image src="/photos/photo-outdoor.jpg" alt="Skyler speaking at outdoor UNCW ceremony" width={700} height={525} className="w-full h-full object-cover object-top" />
+                </div>
+              </div>
             </FadeIn>
             <FadeIn delay={0.1}>
               <div className="space-y-5 text-foreground/70 leading-relaxed pt-8 lg:pt-16">
@@ -481,7 +498,11 @@ export default function Page() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <FadeIn delay={0.1}>
-              <div className="rounded-2xl border border-black/[0.07] bg-surface p-7 h-full hover:shadow-sm transition-all duration-300">
+              <div className="rounded-2xl border border-black/[0.07] bg-surface overflow-hidden h-full hover:shadow-sm transition-all duration-300">
+                <div className="w-full aspect-[16/9] overflow-hidden">
+                  <Image src="/photos/photo-grad.jpg" alt="Skyler graduating from UNCW May 2026" width={1400} height={788} className="w-full h-full object-cover object-top" />
+                </div>
+                <div className="p-7">
                 <div className="flex items-start justify-between gap-4 mb-6">
                   <div>
                     <h3 className="font-heading text-2xl font-medium text-foreground">UNC Wilmington</h3>
@@ -501,6 +522,7 @@ export default function Page() {
                       <span>{item}</span>
                     </div>
                   ))}
+                </div>
                 </div>
               </div>
             </FadeIn>
