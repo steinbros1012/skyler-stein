@@ -837,58 +837,53 @@ export default function Page() {
             {[
               {
                 title: 'Cobalt and Capitalism',
-                subtitle: 'The Human Cost of the Electric Vehicle Revolution in the Congo',
                 description: 'Argues that the global green energy transition depends on exploitative cobalt extraction in the DRC, challenging the moral framing of the electric vehicle revolution.',
                 type: 'Research Paper',
-                course: 'PLS Writing Sample',
                 file: '/portfolio/cobalt-and-capitalism.docx',
                 color: 'from-emerald-500/10 to-transparent',
                 accent: 'text-emerald-700',
                 border: 'hover:border-emerald-300/50',
+                leftBorder: 'border-l-emerald-400',
               },
               {
                 title: 'Affordable Housing in America',
-                subtitle: 'A Comprehensive Policy Analysis of Urban Housing Accessibility',
                 description: 'A full policy analysis examining the U.S. affordable housing crisis, evaluating existing interventions, and proposing targeted solutions for urban accessibility.',
                 type: 'Policy Analysis',
-                course: 'PLS 304 – Public Policy Analysis',
                 file: '/portfolio/affordable-housing-policy.docx',
                 color: 'from-blue-500/10 to-transparent',
                 accent: 'text-blue-700',
                 border: 'hover:border-blue-300/50',
+                leftBorder: 'border-l-blue-400',
               },
               {
                 title: 'AI Regulation Policy Memo',
-                subtitle: 'Overview of the U.S. Artificial Intelligence Legislative Landscape',
                 description: 'A professional policy memo analyzing the federal AI regulatory landscape and recommending strategic positioning for enterprise stakeholders amid Congressional debate.',
                 type: 'Policy Memo',
-                course: 'Forward Global',
                 file: '/portfolio/ai-regulation-memo.docx',
                 color: 'from-violet-500/10 to-transparent',
                 accent: 'text-violet-700',
                 border: 'hover:border-violet-300/50',
+                leftBorder: 'border-l-violet-400',
               },
               {
                 title: 'Party Affiliation Among College Students',
-                subtitle: 'High School Background and Political Identification at UNCW',
                 description: 'Senior capstone research examining what explains political party affiliation among college students, with a focus on high school background as an explanatory variable.',
                 type: 'Research Paper',
-                course: 'PLS 401 – Senior Seminar',
                 file: '/portfolio/party-affiliation-research.docx',
                 color: 'from-amber-500/10 to-transparent',
                 accent: 'text-amber-700',
                 border: 'hover:border-amber-300/50',
+                leftBorder: 'border-l-amber-400',
               },
               {
                 title: 'Nuclear Proliferation: Three Models',
-                subtitle: "A Critical Analysis of Sagan's Proliferation Framework",
                 description: "A critical essay examining Scott Sagan's three-model framework for nuclear proliferation, evaluating the security, domestic politics, and norms models against case evidence.",
                 type: 'Critical Essay',
-                course: 'PLS 420',
                 file: '/portfolio/nuclear-proliferation-essay.docx',
                 color: 'from-rose-500/10 to-transparent',
                 accent: 'text-rose-700',
                 border: 'hover:border-rose-300/50',
+                leftBorder: 'border-l-rose-400',
               },
             ].map((item) => (
               <FadeIn key={item.title} delay={0.05}>
@@ -896,16 +891,10 @@ export default function Page() {
                   <a
                     href={item.file}
                     download
-                    className={`card-shimmer group flex flex-col h-full rounded-2xl border border-black/[0.07] bg-surface p-7 shadow-sm hover:shadow-md ${item.border} transition-all duration-300`}
+                    className={`card-shimmer group flex flex-col h-full rounded-2xl border border-black/[0.07] bg-surface p-7 shadow-sm hover:shadow-md ${item.border} transition-all duration-300 border-l-4 ${item.leftBorder}`}
                   >
-                    <div className={`w-full h-1.5 rounded-full bg-gradient-to-r ${item.color} mb-6`} />
-                    <div className="flex items-center gap-2 mb-3">
-                      <span className={`text-[10px] uppercase tracking-[0.22em] font-medium ${item.accent}`}>{item.type}</span>
-                      <span className="text-black/10">·</span>
-                      <span className="text-[10px] text-muted/60 uppercase tracking-[0.16em]">{item.course}</span>
-                    </div>
-                    <h3 className="font-heading text-lg font-medium text-foreground mb-1 leading-snug">{item.title}</h3>
-                    <p className="text-xs text-muted mb-4 leading-relaxed">{item.subtitle}</p>
+                    <span className={`text-[10px] uppercase tracking-[0.22em] font-medium mb-3 block ${item.accent}`}>{item.type}</span>
+                    <h3 className="font-heading text-lg font-medium text-foreground mb-4 leading-snug">{item.title}</h3>
                     <p className="text-sm text-foreground/60 leading-relaxed flex-1">{item.description}</p>
                     <div className="flex items-center gap-1.5 mt-6 text-xs text-muted/50 group-hover:text-[#C9A84C] transition-colors">
                       <Download className="h-3.5 w-3.5" />
