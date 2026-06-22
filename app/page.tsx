@@ -259,7 +259,9 @@ function ExperienceCard({ label, org, role, date, bullets, logo, photo, photoAlt
 const GALLERY_IMAGES = [
   { src: '/photos/photo-convocation.jpg', alt: 'Skyler addressing students at UNCW convocation' },
   { src: '/photos/photo-board.jpg', alt: 'Skyler speaking at UNCW Board of Trustees' },
-  { src: '/photos/photo-podium.jpg', alt: 'Skyler at UNCW podium' },
+  { src: '/photos/photo-lacrosse.jpg', alt: 'Skyler playing lacrosse for the UNCW Seahawks' },
+  { src: '/photos/photo-capitol.jpg', alt: 'Skyler at the US Capitol' },
+  { src: '/photos/photo-pnc.jpg', alt: 'Skyler at UNC System Boards of Trustees at PNC Arena' },
 ]
 
 export default function Page() {
@@ -687,18 +689,36 @@ export default function Page() {
               </h2>
               {/* Photo grid — click any photo to open lightbox */}
               <div className="grid grid-cols-2 gap-3 mt-6">
-                {GALLERY_IMAGES.map((img, i) => (
-                  <button
-                    key={img.src}
-                    onClick={() => setLightbox({ images: GALLERY_IMAGES, index: i })}
-                    className={`rounded-xl overflow-hidden aspect-[3/2] group relative ${i === 0 ? 'col-span-2' : ''} focus:outline-none`}
-                  >
-                    <Image src={img.src} alt={img.alt} fill className="object-cover object-center group-hover:scale-105 transition-transform duration-500" />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
-                      <span className="text-white text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300">View</span>
-                    </div>
-                  </button>
-                ))}
+                {/* Wide banner */}
+                <button
+                  onClick={() => setLightbox({ images: GALLERY_IMAGES, index: 0 })}
+                  className="col-span-2 rounded-xl overflow-hidden aspect-[3/2] group relative focus:outline-none"
+                >
+                  <Image src={GALLERY_IMAGES[0].src} alt={GALLERY_IMAGES[0].alt} fill className="object-cover object-center group-hover:scale-105 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                    <span className="text-white text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300">View</span>
+                  </div>
+                </button>
+                {/* Board photo */}
+                <button
+                  onClick={() => setLightbox({ images: GALLERY_IMAGES, index: 1 })}
+                  className="rounded-xl overflow-hidden aspect-[3/2] group relative focus:outline-none"
+                >
+                  <Image src={GALLERY_IMAGES[1].src} alt={GALLERY_IMAGES[1].alt} fill className="object-cover object-top group-hover:scale-105 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                    <span className="text-white text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300">View</span>
+                  </div>
+                </button>
+                {/* Lacrosse photo */}
+                <button
+                  onClick={() => setLightbox({ images: GALLERY_IMAGES, index: 2 })}
+                  className="rounded-xl overflow-hidden aspect-[3/2] group relative focus:outline-none"
+                >
+                  <Image src={GALLERY_IMAGES[2].src} alt={GALLERY_IMAGES[2].alt} fill className="object-cover object-[50%_20%] group-hover:scale-105 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                    <span className="text-white text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300">View</span>
+                  </div>
+                </button>
               </div>
             </FadeIn>
             <FadeIn delay={0.1}>
