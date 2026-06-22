@@ -722,6 +722,89 @@ export default function Page() {
 
         <Divider />
 
+        {/* ── PORTFOLIO ───────────────────────────────────────────────────── */}
+        <section id="portfolio" className="py-8">
+          <FadeIn>
+            <SectionLabel>Writing & Research</SectionLabel>
+            <h2 className="font-heading text-4xl md:text-5xl font-light text-foreground mb-4">
+              Selected work.
+            </h2>
+            <p className="text-muted text-sm mb-16 max-w-lg">
+              Academic papers, policy memos, and research written during my time at UNCW and in professional settings. Click any card to download.
+            </p>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {[
+              {
+                title: 'Cobalt and Capitalism',
+                description: 'Argues that the global green energy transition depends on exploitative cobalt extraction in the DRC, challenging the moral framing of the electric vehicle revolution.',
+                type: 'Research Paper',
+                file: '/portfolio/cobalt-and-capitalism.docx',
+                accent: 'text-emerald-700',
+                border: 'hover:border-emerald-300/50',
+                leftBorder: 'border-l-emerald-400',
+              },
+              {
+                title: 'Affordable Housing in America',
+                description: 'A full policy analysis examining the U.S. affordable housing crisis, evaluating existing interventions, and proposing targeted solutions for urban accessibility.',
+                type: 'Policy Analysis',
+                file: '/portfolio/affordable-housing-policy.docx',
+                accent: 'text-blue-700',
+                border: 'hover:border-blue-300/50',
+                leftBorder: 'border-l-blue-400',
+              },
+              {
+                title: 'AI Regulation Policy Memo',
+                description: 'A professional policy memo analyzing the federal AI regulatory landscape and recommending strategic positioning for enterprise stakeholders amid Congressional debate.',
+                type: 'Policy Memo',
+                file: '/portfolio/ai-regulation-memo.docx',
+                accent: 'text-violet-700',
+                border: 'hover:border-violet-300/50',
+                leftBorder: 'border-l-violet-400',
+              },
+              {
+                title: 'Party Affiliation Among College Students',
+                description: 'Senior capstone research examining what explains political party affiliation among college students, with a focus on high school background as an explanatory variable.',
+                type: 'Research Paper',
+                file: '/portfolio/party-affiliation-research.docx',
+                accent: 'text-amber-700',
+                border: 'hover:border-amber-300/50',
+                leftBorder: 'border-l-amber-400',
+              },
+              {
+                title: 'Nuclear Proliferation: Three Models',
+                description: "A critical essay examining Scott Sagan's three-model framework for nuclear proliferation, evaluating the security, domestic politics, and norms models against case evidence.",
+                type: 'Critical Essay',
+                file: '/portfolio/nuclear-proliferation-essay.docx',
+                accent: 'text-rose-700',
+                border: 'hover:border-rose-300/50',
+                leftBorder: 'border-l-rose-400',
+              },
+            ].map((item) => (
+              <FadeIn key={item.title} delay={0.05}>
+                <TiltCard>
+                  <a
+                    href={item.file}
+                    download
+                    className={`card-shimmer group flex flex-col h-full rounded-2xl border border-black/[0.07] bg-surface p-7 shadow-sm hover:shadow-md ${item.border} transition-all duration-300 border-l-4 ${item.leftBorder}`}
+                  >
+                    <span className={`text-[10px] uppercase tracking-[0.22em] font-medium mb-3 block ${item.accent}`}>{item.type}</span>
+                    <h3 className="font-heading text-lg font-medium text-foreground mb-4 leading-snug">{item.title}</h3>
+                    <p className="text-sm text-foreground/60 leading-relaxed flex-1">{item.description}</p>
+                    <div className="flex items-center gap-1.5 mt-6 text-xs text-muted/50 group-hover:text-[#C9A84C] transition-colors">
+                      <Download className="h-3.5 w-3.5" />
+                      <span>Download</span>
+                    </div>
+                  </a>
+                </TiltCard>
+              </FadeIn>
+            ))}
+          </div>
+        </section>
+
+        <Divider />
+
         {/* ── EDUCATION ───────────────────────────────────────────────────── */}
         <section id="education" className="py-8">
           <FadeIn>
@@ -816,94 +899,6 @@ export default function Page() {
                 </div>
               </div>
             </FadeIn>
-          </div>
-        </section>
-
-        <Divider />
-
-        {/* ── PORTFOLIO ───────────────────────────────────────────────────── */}
-        <section id="portfolio" className="py-8">
-          <FadeIn>
-            <SectionLabel>Writing & Research</SectionLabel>
-            <h2 className="font-heading text-4xl md:text-5xl font-light text-foreground mb-4">
-              Selected work.
-            </h2>
-            <p className="text-muted text-sm mb-16 max-w-lg">
-              Academic papers, policy memos, and research written during my time at UNCW and in professional settings. Click any card to download.
-            </p>
-          </FadeIn>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {[
-              {
-                title: 'Cobalt and Capitalism',
-                description: 'Argues that the global green energy transition depends on exploitative cobalt extraction in the DRC, challenging the moral framing of the electric vehicle revolution.',
-                type: 'Research Paper',
-                file: '/portfolio/cobalt-and-capitalism.docx',
-                color: 'from-emerald-500/10 to-transparent',
-                accent: 'text-emerald-700',
-                border: 'hover:border-emerald-300/50',
-                leftBorder: 'border-l-emerald-400',
-              },
-              {
-                title: 'Affordable Housing in America',
-                description: 'A full policy analysis examining the U.S. affordable housing crisis, evaluating existing interventions, and proposing targeted solutions for urban accessibility.',
-                type: 'Policy Analysis',
-                file: '/portfolio/affordable-housing-policy.docx',
-                color: 'from-blue-500/10 to-transparent',
-                accent: 'text-blue-700',
-                border: 'hover:border-blue-300/50',
-                leftBorder: 'border-l-blue-400',
-              },
-              {
-                title: 'AI Regulation Policy Memo',
-                description: 'A professional policy memo analyzing the federal AI regulatory landscape and recommending strategic positioning for enterprise stakeholders amid Congressional debate.',
-                type: 'Policy Memo',
-                file: '/portfolio/ai-regulation-memo.docx',
-                color: 'from-violet-500/10 to-transparent',
-                accent: 'text-violet-700',
-                border: 'hover:border-violet-300/50',
-                leftBorder: 'border-l-violet-400',
-              },
-              {
-                title: 'Party Affiliation Among College Students',
-                description: 'Senior capstone research examining what explains political party affiliation among college students, with a focus on high school background as an explanatory variable.',
-                type: 'Research Paper',
-                file: '/portfolio/party-affiliation-research.docx',
-                color: 'from-amber-500/10 to-transparent',
-                accent: 'text-amber-700',
-                border: 'hover:border-amber-300/50',
-                leftBorder: 'border-l-amber-400',
-              },
-              {
-                title: 'Nuclear Proliferation: Three Models',
-                description: "A critical essay examining Scott Sagan's three-model framework for nuclear proliferation, evaluating the security, domestic politics, and norms models against case evidence.",
-                type: 'Critical Essay',
-                file: '/portfolio/nuclear-proliferation-essay.docx',
-                color: 'from-rose-500/10 to-transparent',
-                accent: 'text-rose-700',
-                border: 'hover:border-rose-300/50',
-                leftBorder: 'border-l-rose-400',
-              },
-            ].map((item) => (
-              <FadeIn key={item.title} delay={0.05}>
-                <TiltCard>
-                  <a
-                    href={item.file}
-                    download
-                    className={`card-shimmer group flex flex-col h-full rounded-2xl border border-black/[0.07] bg-surface p-7 shadow-sm hover:shadow-md ${item.border} transition-all duration-300 border-l-4 ${item.leftBorder}`}
-                  >
-                    <span className={`text-[10px] uppercase tracking-[0.22em] font-medium mb-3 block ${item.accent}`}>{item.type}</span>
-                    <h3 className="font-heading text-lg font-medium text-foreground mb-4 leading-snug">{item.title}</h3>
-                    <p className="text-sm text-foreground/60 leading-relaxed flex-1">{item.description}</p>
-                    <div className="flex items-center gap-1.5 mt-6 text-xs text-muted/50 group-hover:text-[#C9A84C] transition-colors">
-                      <Download className="h-3.5 w-3.5" />
-                      <span>Download</span>
-                    </div>
-                  </a>
-                </TiltCard>
-              </FadeIn>
-            ))}
           </div>
         </section>
 
