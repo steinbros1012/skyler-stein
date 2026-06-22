@@ -1,9 +1,95 @@
 'use client'
 
-import { motion, useInView, useMotionValue, useSpring, animate, useScroll, useTransform } from 'framer-motion'
-import { ArrowUpRight, Mail, ChevronDown, Download } from 'lucide-react'
-import { useRef, useEffect, useState } from 'react'
+import { motion, useInView, useMotionValue, useSpring, animate, useScroll, useTransform, AnimatePresence } from 'framer-motion'
+import { ArrowUpRight, Mail, ChevronDown, Download, X, ChevronLeft, ChevronRight } from 'lucide-react'
+import { useRef, useEffect, useState, useCallback } from 'react'
 import Image from 'next/image'
+
+// ─── Typewriter ───────────────────────────────────────────────────────────────
+function Typewriter({ text, delay = 0 }: { text: string; delay?: number }) {
+  const [displayed, setDisplayed] = useState('')
+  const [started, setStarted] = useState(false)
+  useEffect(() => {
+    const t = setTimeout(() => setStarted(true), delay * 1000)
+    return () => clearTimeout(t)
+  }, [delay])
+  useEffect(() => {
+    if (!started) return
+    if (displayed.length >= text.length) return
+    const t = setTimeout(() => setDisplayed(text.slice(0, displayed.length + 1)), 38)
+    return () => clearTimeout(t)
+  }, [started, displayed, text])
+  return <span>{displayed}<span className="animate-pulse">|</span></span>
+}
+
+// ─── Lightbox ─────────────────────────────────────────────────────────────────
+interface LightboxProps {
+  images: { src: string; alt: string }[]
+  index: number
+  onClose: () => void
+}
+function Lightbox({ images, index: initialIndex, onClose }: LightboxProps) {
+  const [index, setIndex] = useState(initialIndex)
+  const prev = useCallback(() => setIndex(i => (i - 1 + images.length) % images.length), [images.length])
+  const next = useCallback(() => setIndex(i => (i + 1) % images.length), [images.length])
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose()
+      if (e.key === 'ArrowLeft') prev()
+      if (e.key === 'ArrowRight') next()
+    }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [onClose, prev, next])
+  return (
+    <motion.div
+      initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[200] bg-black/90 backdrop-blur-md flex items-center justify-center"
+      onClick={onClose}
+    >
+      <button onClick={onClose} className="absolute top-5 right-5 text-white/60 hover:text-white transition-colors"><X className="h-7 w-7" /></button>
+      {images.length > 1 && (
+        <>
+          <button onClick={e => { e.stopPropagation(); prev() }} className="absolute left-4 text-white/60 hover:text-white transition-colors"><ChevronLeft className="h-9 w-9" /></button>
+          <button onClick={e => { e.stopPropagation(); next() }} className="absolute right-4 text-white/60 hover:text-white transition-colors"><ChevronRight className="h-9 w-9" /></button>
+        </>
+      )}
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }}
+        transition={{ duration: 0.2 }}
+        className="max-w-5xl max-h-[85vh] mx-8 relative"
+        onClick={e => e.stopPropagation()}
+      >
+        <img src={images[index].src} alt={images[index].alt} className="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl" />
+        <p className="text-center text-white/40 text-sm mt-3">{images[index].alt}</p>
+      </motion.div>
+    </motion.div>
+  )
+}
+
+// ─── Tilt card ────────────────────────────────────────────────────────────────
+function TiltCard({ children, className = '' }: { children: React.ReactNode; className?: string }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const x = useMotionValue(0)
+  const y = useMotionValue(0)
+  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [4, -4]), { stiffness: 300, damping: 30 })
+  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-4, 4]), { stiffness: 300, damping: 30 })
+  const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = ref.current!.getBoundingClientRect()
+    x.set((e.clientX - rect.left) / rect.width - 0.5)
+    y.set((e.clientY - rect.top) / rect.height - 0.5)
+  }
+  const onMouseLeave = () => { x.set(0); y.set(0) }
+  return (
+    <motion.div ref={ref} style={{ rotateX, rotateY, transformPerspective: 800 }}
+      onMouseMove={onMouseMove} onMouseLeave={onMouseLeave}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  )
+}
 
 // ─── Animated counter ────────────────────────────────────────────────────────
 function AnimatedCounter({ value, suffix = '', decimals = 0 }: { value: number; suffix?: string; decimals?: number }) {
@@ -170,8 +256,16 @@ function ExperienceCard({ label, org, role, date, bullets, logo, photo, photoAlt
   )
 }
 
+const GALLERY_IMAGES = [
+  { src: '/photos/photo-convocation.jpg', alt: 'Skyler addressing students at UNCW convocation' },
+  { src: '/photos/photo-board.jpg', alt: 'Skyler speaking at UNCW Board of Trustees' },
+  { src: '/photos/photo-podium.jpg', alt: 'Skyler at UNCW podium' },
+]
+
 export default function Page() {
   const [scrolled, setScrolled] = useState(false)
+  const [activeSection, setActiveSection] = useState('')
+  const [lightbox, setLightbox] = useState<{ images: { src: string; alt: string }[]; index: number } | null>(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -179,10 +273,27 @@ export default function Page() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => {
+    const sections = ['experience', 'about', 'education', 'contact']
+    const observers = sections.map(id => {
+      const el = document.getElementById(id)
+      if (!el) return null
+      const obs = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) setActiveSection(id)
+      }, { threshold: 0.3 })
+      obs.observe(el)
+      return obs
+    })
+    return () => observers.forEach(o => o?.disconnect())
+  }, [])
+
   return (
     <main className="min-h-screen overflow-x-hidden">
       <ScrollProgress />
       <CursorSpotlight />
+      <AnimatePresence>
+        {lightbox && <Lightbox images={lightbox.images} index={lightbox.index} onClose={() => setLightbox(null)} />}
+      </AnimatePresence>
 
       {/* ── NAV ───────────────────────────────────────────────────────────── */}
       <motion.nav
@@ -200,15 +311,28 @@ export default function Page() {
             Skyler Stein
           </span>
           <div className="hidden md:flex items-center gap-8">
-            {['Experience', 'About', 'Education', 'Contact'].map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className={`text-sm transition-colors duration-200 navy-link ${scrolled ? 'text-muted hover:text-foreground' : 'text-white/70 hover:text-white'}`}
-              >
-                {item}
-              </a>
-            ))}
+            {['Experience', 'About', 'Education', 'Contact'].map((item) => {
+              const isActive = activeSection === item.toLowerCase()
+              return (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  className={`text-sm transition-colors duration-200 relative ${
+                    isActive
+                      ? 'text-[#C9A84C]'
+                      : scrolled ? 'text-muted hover:text-foreground' : 'text-white/70 hover:text-white'
+                  }`}
+                >
+                  {item}
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-indicator"
+                      className="absolute -bottom-1 left-0 right-0 h-px bg-[#C9A84C]"
+                    />
+                  )}
+                </a>
+              )
+            })}
           </div>
           <a
             href="https://www.linkedin.com/in/skylerstein"
@@ -252,7 +376,7 @@ export default function Page() {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
               </span>
               <span className="text-[11px] uppercase tracking-[0.26em] text-white/60">
-                Searching for Public Service &amp; Policy Opportunities
+                <Typewriter text="Searching for Public Service & Policy Opportunities" delay={0.8} />
               </span>
             </motion.div>
 
@@ -392,65 +516,71 @@ export default function Page() {
 
           <div className="space-y-6">
             <FadeIn delay={0.1}>
-              <ExperienceCard
-                label="Current"
-                org="Nexus Strategies"
-                role="Political Research Assistant"
-                date="June 2026 – Present"
-                logo={
-                  <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-white border border-black/[0.08] overflow-hidden">
-                    <img src="/logos/nexus.png" alt="Nexus Strategies" className="w-full h-full object-cover" />
-                  </div>
-                }
-                bullets={[
-                  'Conduct in-depth research and analysis on state and local races across North Carolina, tracking political trends, candidate positioning, and electoral developments',
-                  'Monitor legislative, regulatory, and political developments related to energy policy, providing timely analysis and strategic insights for internal stakeholders',
-                  'Produce research memoranda, candidate profiles, district analyses, and briefing materials to support client engagement and strategic decision-making',
-                  'Analyze voting patterns, demographic trends, fundraising activity, and public policy developments to identify opportunities and risks across key North Carolina races',
-                ]}
-              />
+              <TiltCard>
+                <ExperienceCard
+                  label="Current"
+                  org="Nexus Strategies"
+                  role="Political Research Assistant"
+                  date="June 2026 – Present"
+                  logo={
+                    <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-white border border-black/[0.08] overflow-hidden">
+                      <img src="/logos/nexus.png" alt="Nexus Strategies" className="w-full h-full object-cover" />
+                    </div>
+                  }
+                  bullets={[
+                    'Conduct in-depth research and analysis on state and local races across North Carolina, tracking political trends, candidate positioning, and electoral developments',
+                    'Monitor legislative, regulatory, and political developments related to energy policy, providing timely analysis and strategic insights for internal stakeholders',
+                    'Produce research memoranda, candidate profiles, district analyses, and briefing materials to support client engagement and strategic decision-making',
+                    'Analyze voting patterns, demographic trends, fundraising activity, and public policy developments to identify opportunities and risks across key North Carolina races',
+                  ]}
+                />
+              </TiltCard>
             </FadeIn>
 
             <FadeIn delay={0.13}>
-              <ExperienceCard
-                label="Federal"
-                org="US House of Representatives"
-                role="Legislative Intern"
-                date="Summer 2025"
-                photo="/photos/photo-capitol.jpg"
-                photoAlt="Skyler at the US Capitol"
-                photoPosition="object-[50%_30%]"
-                logo={
-                  <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-white border border-black/[0.08] overflow-hidden p-0.5">
-                    <img src="/logos/house.svg" alt="US House of Representatives" className="w-full h-full object-contain" />
-                  </div>
-                }
-                bullets={[
-                  'Researched legislation and policy issues, preparing memos and briefs to inform congressional staff decision-making',
-                  'Drafted and edited constituent correspondence on federal issues',
-                  'Attended committee hearings, briefings, and floor proceedings, summarizing key takeaways',
-                  'Conducted Capitol tours and aided visiting constituents',
-                ]}
-              />
+              <TiltCard>
+                <ExperienceCard
+                  label="Federal"
+                  org="US House of Representatives"
+                  role="Legislative Intern"
+                  date="Summer 2025"
+                  photo="/photos/photo-capitol.jpg"
+                  photoAlt="Skyler at the US Capitol"
+                  photoPosition="object-[50%_30%]"
+                  logo={
+                    <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-white border border-black/[0.08] overflow-hidden p-0.5">
+                      <img src="/logos/house.svg" alt="US House of Representatives" className="w-full h-full object-contain" />
+                    </div>
+                  }
+                  bullets={[
+                    'Researched legislation and policy issues, preparing memos and briefs to inform congressional staff decision-making',
+                    'Drafted and edited constituent correspondence on federal issues',
+                    'Attended committee hearings, briefings, and floor proceedings, summarizing key takeaways',
+                    'Conducted Capitol tours and aided visiting constituents',
+                  ]}
+                />
+              </TiltCard>
             </FadeIn>
 
             <FadeIn delay={0.16}>
-              <ExperienceCard
-                label="Campaign"
-                org="NC Coordinated Campaign"
-                role="Campus Organizing Fellow"
-                date="April 2026 – May 2026"
-                logo={
-                  <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-white border border-black/[0.08] overflow-hidden p-0.5">
-                    <img src="/logos/nc-campaign.svg" alt="NC Coordinated Campaign" className="w-full h-full object-contain" />
-                  </div>
-                }
-                bullets={[
-                  'Built relationships with student voters, campus organizations, and university stakeholders for a statewide coordinated campaign',
-                  'Supported voter outreach through direct voter contact, event staffing, and voter education on a campus of over 19,000 students',
-                  'Connected campus-based organizing to broader electoral and youth engagement strategy',
-                ]}
-              />
+              <TiltCard>
+                <ExperienceCard
+                  label="Campaign"
+                  org="NC Coordinated Campaign"
+                  role="Campus Organizing Fellow"
+                  date="April 2026 – May 2026"
+                  logo={
+                    <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-white border border-black/[0.08] overflow-hidden p-0.5">
+                      <img src="/logos/nc-campaign.svg" alt="NC Coordinated Campaign" className="w-full h-full object-contain" />
+                    </div>
+                  }
+                  bullets={[
+                    'Built relationships with student voters, campus organizations, and university stakeholders for a statewide coordinated campaign',
+                    'Supported voter outreach through direct voter contact, event staffing, and voter education on a campus of over 19,000 students',
+                    'Connected campus-based organizing to broader electoral and youth engagement strategy',
+                  ]}
+                />
+              </TiltCard>
             </FadeIn>
 
             <FadeIn delay={0.19}>
@@ -555,17 +685,20 @@ export default function Page() {
               <h2 className="font-heading text-4xl md:text-5xl font-light text-foreground mb-8">
                 A young leader looking to begin a career in public service.
               </h2>
-              {/* Photo grid */}
+              {/* Photo grid — click any photo to open lightbox */}
               <div className="grid grid-cols-2 gap-3 mt-6">
-                <div className="col-span-2 rounded-xl overflow-hidden aspect-[3/2]">
-                  <Image src="/photos/photo-convocation.jpg" alt="Skyler addressing students at UNCW convocation" width={1400} height={933} className="w-full h-full object-cover object-center" />
-                </div>
-                <div className="rounded-xl overflow-hidden aspect-[3/2]">
-                  <Image src="/photos/photo-board.jpg" alt="Skyler speaking at UNCW Board of Trustees" width={700} height={467} className="w-full h-full object-cover object-top" />
-                </div>
-                <div className="rounded-xl overflow-hidden aspect-[3/2]">
-                  <Image src="/photos/photo-podium.jpg" alt="Skyler speaking at UNCW podium" width={700} height={467} className="w-full h-full object-cover object-top" />
-                </div>
+                {GALLERY_IMAGES.map((img, i) => (
+                  <button
+                    key={img.src}
+                    onClick={() => setLightbox({ images: GALLERY_IMAGES, index: i })}
+                    className={`rounded-xl overflow-hidden aspect-[3/2] group relative ${i === 0 ? 'col-span-2' : ''} focus:outline-none`}
+                  >
+                    <Image src={img.src} alt={img.alt} fill className="object-cover object-center group-hover:scale-105 transition-transform duration-500" />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                      <span className="text-white text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300">View</span>
+                    </div>
+                  </button>
+                ))}
               </div>
             </FadeIn>
             <FadeIn delay={0.1}>
