@@ -66,16 +66,19 @@ function FadeIn({
 // ─── Section label ───────────────────────────────────────────────────────────
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-[11px] uppercase tracking-[0.28em] text-navy/60 mb-4">
-      {children}
-    </p>
+    <div className="flex items-center gap-3 mb-4">
+      <span className="h-px w-6 bg-[#C9A84C]" />
+      <p className="text-[11px] uppercase tracking-[0.28em] text-[#C9A84C]">
+        {children}
+      </p>
+    </div>
   )
 }
 
 // ─── Divider ─────────────────────────────────────────────────────────────────
 function Divider() {
   return (
-    <div className="w-full h-px bg-gradient-to-r from-transparent via-black/10 to-transparent my-24 md:my-32" />
+    <div className="w-full h-px bg-gradient-to-r from-transparent via-[#C9A84C]/20 to-transparent my-24 md:my-32" />
   )
 }
 
@@ -91,7 +94,7 @@ interface ExperienceCardProps {
 
 function ExperienceCard({ label, org, role, date, bullets, logo }: ExperienceCardProps) {
   return (
-    <div className="group rounded-2xl border border-black/[0.07] bg-surface p-7 md:p-9 hover:border-navy/20 hover:shadow-sm transition-all duration-300">
+    <div className="group rounded-2xl border border-black/[0.07] bg-surface p-7 md:p-9 shadow-sm hover:shadow-md hover:border-[#C9A84C]/30 transition-all duration-300">
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
         <div className="flex items-start gap-4">
           {logo && <div className="shrink-0 mt-1">{logo}</div>}
@@ -144,7 +147,7 @@ export default function Page() {
         }`}
       >
         <div className="max-w-6xl mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
-          <span className="font-heading text-lg font-medium tracking-wide text-foreground">
+          <span className={`font-heading text-lg font-medium tracking-wide transition-colors duration-300 ${scrolled ? 'text-foreground' : 'text-white'}`}>
             Skyler Stein
           </span>
           <div className="hidden md:flex items-center gap-8">
@@ -152,7 +155,7 @@ export default function Page() {
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-sm text-muted hover:text-foreground transition-colors duration-200 navy-link"
+                className={`text-sm transition-colors duration-200 navy-link ${scrolled ? 'text-muted hover:text-foreground' : 'text-white/70 hover:text-white'}`}
               >
                 {item}
               </a>
@@ -162,7 +165,7 @@ export default function Page() {
             href="https://www.linkedin.com/in/skylerstein"
             target="_blank"
             rel="noreferrer"
-            className="flex items-center gap-1.5 text-sm text-navy hover:text-navy/70 transition-colors"
+            className={`flex items-center gap-1.5 text-sm transition-colors ${scrolled ? 'text-navy hover:text-navy/70' : 'text-white/80 hover:text-white'}`}
           >
             <LinkedinIcon className="h-3.5 w-3.5" />
             LinkedIn
@@ -171,11 +174,17 @@ export default function Page() {
       </motion.nav>
 
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Background grid with navy tint */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(27,58,107,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(27,58,107,0.03)_1px,transparent_1px)] bg-[size:72px_72px] opacity-70 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_80%)]" />
-        {/* Subtle navy glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-[radial-gradient(circle,rgba(27,58,107,0.05),transparent_65%)] blur-3xl pointer-events-none" />
+      <section className="relative min-h-screen flex items-center overflow-hidden bg-[#0D1B2E]">
+        {/* Mesh gradient orbs */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full bg-[radial-gradient(circle,rgba(27,58,107,0.7),transparent_65%)] blur-3xl" />
+          <div className="absolute -bottom-20 -left-40 w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,rgba(27,58,107,0.5),transparent_65%)] blur-3xl" />
+          <div className="absolute top-1/3 left-1/3 w-[400px] h-[400px] rounded-full bg-[radial-gradient(circle,rgba(201,168,76,0.06),transparent_65%)] blur-3xl" />
+        </div>
+        {/* Grid overlay */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_80%)]" />
+        {/* Bottom fade to page background */}
+        <div className="absolute bottom-0 inset-x-0 h-48 bg-gradient-to-b from-transparent to-[#F5F6F8] pointer-events-none" />
 
         <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-10 pt-32 pb-24 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -187,13 +196,13 @@ export default function Page() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="inline-flex items-center gap-2 rounded-full border border-navy/15 bg-navy/[0.06] px-4 py-1.5 mb-8"
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.07] px-4 py-1.5 mb-8"
             >
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
               </span>
-              <span className="text-[11px] uppercase tracking-[0.26em] text-navy/70">
+              <span className="text-[11px] uppercase tracking-[0.26em] text-white/60">
                 Searching for Public Service &amp; Policy Opportunities
               </span>
             </motion.div>
@@ -203,10 +212,10 @@ export default function Page() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
-              className="font-heading text-6xl md:text-7xl lg:text-8xl font-light leading-[0.92] tracking-[-0.02em] text-foreground mb-8"
+              className="font-heading text-6xl md:text-7xl lg:text-8xl font-light leading-[0.92] tracking-[-0.02em] text-white mb-8"
             >
               Skyler<br />
-              <span className="italic text-navy">Stein</span>
+              <span className="italic text-[#C9A84C]">Stein</span>
             </motion.h1>
 
             {/* Bio */}
@@ -214,7 +223,7 @@ export default function Page() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.28 }}
-              className="text-lg text-muted leading-relaxed max-w-lg mb-10"
+              className="text-lg text-white/55 leading-relaxed max-w-lg mb-10"
             >
               Political Science graduate from UNC Wilmington. Twice-elected Student Body President representing 19,000+ students. Experience interning in the U.S. House of Representatives and working on a U.S. Senate campaign. Searching for public service and policy opportunities in Washington, D.C. or Raleigh, N.C.
             </motion.p>
@@ -227,22 +236,22 @@ export default function Page() {
               className="flex flex-wrap gap-8 mb-10"
             >
               <div className="flex flex-col">
-                <span className="font-heading text-3xl font-semibold text-navy">
+                <span className="font-heading text-3xl font-semibold text-[#C9A84C]">
                   <AnimatedCounter value={3.565} decimals={3} />
                 </span>
-                <span className="text-xs uppercase tracking-[0.2em] text-muted mt-0.5">GPA</span>
+                <span className="text-xs uppercase tracking-[0.2em] text-white/40 mt-0.5">GPA</span>
               </div>
               <div className="flex flex-col">
-                <span className="font-heading text-3xl font-semibold text-navy">
+                <span className="font-heading text-3xl font-semibold text-[#C9A84C]">
                   <AnimatedCounter value={2} suffix="×" />
                 </span>
-                <span className="text-xs uppercase tracking-[0.2em] text-muted mt-0.5">Elected</span>
+                <span className="text-xs uppercase tracking-[0.2em] text-white/40 mt-0.5">Elected</span>
               </div>
               <div className="flex flex-col">
-                <span className="font-heading text-3xl font-semibold text-navy">
+                <span className="font-heading text-3xl font-semibold text-[#C9A84C]">
                   <AnimatedCounter value={19} suffix="K+" />
                 </span>
-                <span className="text-xs uppercase tracking-[0.2em] text-muted mt-0.5">Students</span>
+                <span className="text-xs uppercase tracking-[0.2em] text-white/40 mt-0.5">Students</span>
               </div>
             </motion.div>
 
@@ -257,14 +266,14 @@ export default function Page() {
                 href="https://www.linkedin.com/in/skylerstein"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-navy text-white px-6 py-2.5 text-sm font-medium hover:bg-navy/85 transition-colors"
+                className="inline-flex items-center gap-2 rounded-full bg-[#C9A84C] text-[#0D1B2E] px-6 py-2.5 text-sm font-semibold hover:bg-[#d4b35f] transition-colors"
               >
                 <LinkedinIcon className="h-4 w-4" />
                 Connect on LinkedIn
               </a>
               <a
                 href="mailto:skylerstein22@gmail.com"
-                className="inline-flex items-center gap-2 rounded-full border border-black/[0.12] bg-white text-foreground/80 px-6 py-2.5 text-sm font-medium hover:border-navy/30 hover:text-foreground transition-colors"
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.07] text-white/80 px-6 py-2.5 text-sm font-medium hover:border-white/40 hover:text-white transition-colors"
               >
                 <Mail className="h-4 w-4" />
                 skylerstein22@gmail.com
@@ -305,7 +314,7 @@ export default function Page() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2, duration: 0.6 }}
-            className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted/40"
+            className="absolute bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30"
           >
             <span className="text-[10px] uppercase tracking-[0.3em]">Scroll</span>
             <ChevronDown className="h-4 w-4 animate-bounce" />
@@ -651,13 +660,13 @@ export default function Page() {
       </div>
 
       {/* ── FOOTER ──────────────────────────────────────────────────────────── */}
-      <footer className="border-t border-black/[0.07] py-8">
+      <footer className="bg-[#0D1B2E] py-8">
         <div className="max-w-6xl mx-auto px-6 md:px-10 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <span className="font-heading text-sm text-muted">Skyler Stein</span>
-          <span className="text-xs text-muted/60">Political Science · UNCW Class of 2026</span>
+          <span className="font-heading text-sm text-white/60">Skyler Stein</span>
+          <span className="text-xs text-white/30">Political Science · UNCW Class of 2026</span>
           <a
             href="mailto:skylerstein22@gmail.com"
-            className="text-xs text-muted/40 hover:text-navy/60 transition-colors"
+            className="text-xs text-white/25 hover:text-[#C9A84C] transition-colors"
           >
             skylerstein22@gmail.com
           </a>
