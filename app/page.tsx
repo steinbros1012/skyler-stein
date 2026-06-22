@@ -650,13 +650,14 @@ export default function Page() {
                 <div className="rounded-2xl border border-black/[0.07] bg-surface p-7 hover:shadow-sm transition-all duration-300">
                   <h3 className="font-heading text-xl font-medium text-foreground mb-5">Areas of Interest</h3>
                   <div className="grid grid-cols-2 gap-3">
-                    {[
+                    [
                       { label: 'State & Local Government', icon: '🏛️' },
                       { label: 'Election Law & Policy', icon: '⚖️' },
                       { label: 'Energy Policy', icon: '⚡' },
                       { label: 'Constitutional Law', icon: '📜' },
                       { label: 'Campaign Strategy', icon: '🗳️' },
                       { label: 'Public Administration', icon: '🏢' },
+                      { label: 'Public Higher Education', icon: '🎓' },
                     ].map(({ label, icon }) => (
                       <div key={label} className="flex items-center gap-2.5 text-sm text-foreground/65">
                         <span className="text-base">{icon}</span>
