@@ -535,7 +535,7 @@ export default function Page() {
             <FadeIn>
               <SectionLabel>About</SectionLabel>
               <h2 className="font-heading text-4xl md:text-5xl font-light text-foreground mb-8">
-                From Apex to Washington, and back.
+                A young leader looking to begin a career in public service.
               </h2>
               {/* Photo grid */}
               <div className="grid grid-cols-2 gap-3 mt-6">
