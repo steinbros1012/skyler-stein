@@ -178,7 +178,7 @@ function FadeIn({
       ref={ref}
       initial={{ opacity: 0, y: 22 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.4, delay, ease: [0.16, 1, 0.3, 1] }}
       className={className}
     >
       {children}
@@ -251,6 +251,7 @@ function ExperienceCard({ label, org, role, date, bullets, logo, photo, photoAlt
           </li>
         ))}
       </ul>
+      </div>
     </div>
   )
 }
@@ -302,7 +303,7 @@ export default function Page() {
       <motion.nav
         initial={{ opacity: 0, y: -12 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.25 }}
         className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
           scrolled
             ? 'bg-background/90 backdrop-blur-md border-b border-black/[0.07]'
@@ -310,9 +311,9 @@ export default function Page() {
         }`}
       >
         <div className="max-w-6xl mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
-          <span className={`font-heading text-lg font-medium tracking-wide transition-colors duration-300 ${scrolled ? 'text-foreground' : 'text-white'}`}>
+          <a href="#" className={`font-heading text-lg font-medium tracking-wide transition-colors duration-300 ${scrolled ? 'text-foreground' : 'text-white'}`}>
             Skyler Stein
-          </span>
+          </a>
           <div className="hidden md:flex items-center gap-8">
             {['Experience', 'About', 'Education', 'Contact'].map((item) => {
               const isActive = activeSection === item.toLowerCase()
@@ -371,7 +372,7 @@ export default function Page() {
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
+              transition={{ duration: 0.3, delay: 0.05 }}
               className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.07] px-4 py-1.5 mb-8"
             >
               <span className="relative flex h-2 w-2">
@@ -387,7 +388,7 @@ export default function Page() {
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.65, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="font-heading text-6xl md:text-7xl lg:text-8xl font-light leading-[0.92] tracking-[-0.02em] text-white mb-8"
             >
               Skyler<br />
@@ -398,7 +399,7 @@ export default function Page() {
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.28 }}
+              transition={{ duration: 0.4, delay: 0.15 }}
               className="text-lg text-white/55 leading-relaxed max-w-lg mb-10"
             >
               Political Science graduate from UNC Wilmington. Twice-elected Student Body President representing 19,000+ students. Experience interning in the U.S. House of Representatives and working on a U.S. Senate campaign. Searching for public service and policy opportunities in Washington, D.C. or Raleigh, N.C.
@@ -408,7 +409,7 @@ export default function Page() {
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.36 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
               className="flex flex-wrap gap-8 mb-10"
             >
               <div className="flex flex-col">
@@ -435,7 +436,7 @@ export default function Page() {
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.44 }}
+              transition={{ duration: 0.4, delay: 0.25 }}
               className="flex flex-wrap gap-3"
             >
               <a
@@ -475,7 +476,7 @@ export default function Page() {
             <motion.div
               initial={{ opacity: 0, scale: 0.5, y: 80, rotate: -12, filter: 'blur(8px)' }}
               animate={{ opacity: 1, scale: 1, y: 0, rotate: 0, filter: 'blur(0px)' }}
-              transition={{ duration: 1.1, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
               className="relative"
             >
               <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-navy/20 via-navy/5 to-transparent blur-sm" />
