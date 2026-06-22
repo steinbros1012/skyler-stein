@@ -615,25 +615,55 @@ export default function Page() {
             </FadeIn>
 
             <FadeIn delay={0.15}>
-              <div className="rounded-2xl border border-black/[0.07] bg-surface p-7 h-full hover:shadow-sm transition-all duration-300">
-                <h3 className="font-heading text-xl font-medium text-foreground mb-6">Skills</h3>
-                <div className="flex flex-wrap gap-2">
-                  {[
-                    'Public Speaking',
-                    'Legislative Research',
-                    'Policy Analysis',
-                    'Strategic Leadership',
-                    'Stakeholder Engagement',
-                    'Cross-Functional Team Management',
-                    'Advocacy',
-                  ].map((skill) => (
-                    <span
-                      key={skill}
-                      className="rounded-full border border-black/[0.08] bg-background px-3 py-1.5 text-xs text-foreground/70 hover:border-[#C9A84C] hover:bg-[#C9A84C] hover:text-[#0D1B2E] hover:font-medium transition-all duration-200 cursor-default"
-                    >
-                      {skill}
-                    </span>
-                  ))}
+              <div className="flex flex-col gap-5 h-full">
+                {/* Skills */}
+                <div className="rounded-2xl border border-black/[0.07] bg-surface p-7 hover:shadow-sm transition-all duration-300">
+                  <h3 className="font-heading text-xl font-medium text-foreground mb-5">Skills</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      'Public Speaking',
+                      'Legislative Research',
+                      'Policy Analysis',
+                      'Political Research',
+                      'Strategic Leadership',
+                      'Stakeholder Engagement',
+                      'Constituent Relations',
+                      'Community Organizing',
+                      'Advocacy',
+                      'Voter Outreach',
+                      'Written Communication',
+                      'Board Governance',
+                      'Team Leadership',
+                      'Election Analysis',
+                    ].map((skill) => (
+                      <span
+                        key={skill}
+                        className="rounded-full border border-black/[0.08] bg-background px-3 py-1.5 text-xs text-foreground/70 hover:border-[#C9A84C] hover:bg-[#C9A84C] hover:text-[#0D1B2E] hover:font-medium transition-all duration-200 cursor-default"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Areas of Interest */}
+                <div className="rounded-2xl border border-black/[0.07] bg-surface p-7 hover:shadow-sm transition-all duration-300">
+                  <h3 className="font-heading text-xl font-medium text-foreground mb-5">Areas of Interest</h3>
+                  <div className="grid grid-cols-2 gap-3">
+                    {[
+                      { label: 'State & Local Government', icon: '🏛️' },
+                      { label: 'Election Law & Policy', icon: '⚖️' },
+                      { label: 'Energy Policy', icon: '⚡' },
+                      { label: 'Constitutional Law', icon: '📜' },
+                      { label: 'Campaign Strategy', icon: '🗳️' },
+                      { label: 'Public Administration', icon: '🏢' },
+                    ].map(({ label, icon }) => (
+                      <div key={label} className="flex items-center gap-2.5 text-sm text-foreground/65">
+                        <span className="text-base">{icon}</span>
+                        <span>{label}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </FadeIn>
