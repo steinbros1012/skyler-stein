@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, useInView, useMotionValue, useSpring, animate, useScroll, useTransform, AnimatePresence } from 'framer-motion'
-import { ArrowUpRight, Mail, ChevronDown, Download, X, ChevronLeft, ChevronRight } from 'lucide-react'
+import { ArrowUpRight, Mail, ChevronDown, Download, X, ChevronLeft, ChevronRight, Menu } from 'lucide-react'
 import { useRef, useEffect, useState, useCallback } from 'react'
 import Image from 'next/image'
 
@@ -71,18 +71,21 @@ function Lightbox({ images, index: initialIndex, onClose }: LightboxProps) {
 // ─── Tilt card ────────────────────────────────────────────────────────────────
 function TiltCard({ children, className = '' }: { children: React.ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null)
+  const [isTouch, setIsTouch] = useState(false)
   const x = useMotionValue(0)
   const y = useMotionValue(0)
   const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [4, -4]), { stiffness: 300, damping: 30 })
   const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-4, 4]), { stiffness: 300, damping: 30 })
+  useEffect(() => { setIsTouch(window.matchMedia('(hover: none)').matches) }, [])
   const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (isTouch) return
     const rect = ref.current!.getBoundingClientRect()
     x.set((e.clientX - rect.left) / rect.width - 0.5)
     y.set((e.clientY - rect.top) / rect.height - 0.5)
   }
   const onMouseLeave = () => { x.set(0); y.set(0) }
   return (
-    <motion.div ref={ref} style={{ rotateX, rotateY, transformPerspective: 800 }}
+    <motion.div ref={ref} style={isTouch ? {} : { rotateX, rotateY, transformPerspective: 800 }}
       onMouseMove={onMouseMove} onMouseLeave={onMouseLeave}
       className={className}
     >
@@ -127,12 +130,17 @@ function ScrollProgress() {
 function CursorSpotlight() {
   const x = useMotionValue(-400)
   const y = useMotionValue(-400)
+  const [isTouch, setIsTouch] = useState(false)
+  useEffect(() => { setIsTouch(window.matchMedia('(hover: none)').matches) }, [])
 
   useEffect(() => {
+    if (isTouch) return
     const move = (e: MouseEvent) => { x.set(e.clientX); y.set(e.clientY) }
     window.addEventListener('mousemove', move)
     return () => window.removeEventListener('mousemove', move)
-  }, [x, y])
+  }, [x, y, isTouch])
+
+  if (isTouch) return null
 
   return (
     <motion.div
@@ -268,6 +276,7 @@ export default function Page() {
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('')
   const [lightbox, setLightbox] = useState<{ images: { src: string; alt: string }[]; index: number } | null>(null)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -314,40 +323,62 @@ export default function Page() {
           <a href="#" className={`font-heading text-lg font-medium tracking-wide transition-colors duration-300 ${scrolled ? 'text-foreground' : 'text-white'}`}>
             Skyler Stein
           </a>
+          {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-8">
             {['Experience', 'About', 'Portfolio', 'Education', 'Contact'].map((item) => {
               const isActive = activeSection === item.toLowerCase()
               return (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  className={`text-sm transition-colors duration-200 relative ${
-                    isActive
-                      ? 'text-[#C9A84C]'
-                      : scrolled ? 'text-muted hover:text-foreground' : 'text-white/70 hover:text-white'
-                  }`}
+                <a key={item} href={`#${item.toLowerCase()}`}
+                  className={`text-sm transition-colors duration-200 relative ${isActive ? 'text-[#C9A84C]' : scrolled ? 'text-muted hover:text-foreground' : 'text-white/70 hover:text-white'}`}
                 >
                   {item}
-                  {isActive && (
-                    <motion.span
-                      layoutId="nav-indicator"
-                      className="absolute -bottom-1 left-0 right-0 h-px bg-[#C9A84C]"
-                    />
-                  )}
+                  {isActive && <motion.span layoutId="nav-indicator" className="absolute -bottom-1 left-0 right-0 h-px bg-[#C9A84C]" />}
                 </a>
               )
             })}
           </div>
-          <a
-            href="https://www.linkedin.com/in/skylerstein"
-            target="_blank"
-            rel="noreferrer"
-            className={`flex items-center gap-1.5 text-sm transition-colors ${scrolled ? 'text-navy hover:text-navy/70' : 'text-white/80 hover:text-white'}`}
+          {/* Desktop LinkedIn */}
+          <a href="https://www.linkedin.com/in/skylerstein" target="_blank" rel="noreferrer"
+            className={`hidden md:flex items-center gap-1.5 text-sm transition-colors ${scrolled ? 'text-navy hover:text-navy/70' : 'text-white/80 hover:text-white'}`}
           >
             <LinkedinIcon className="h-3.5 w-3.5" />
             LinkedIn
           </a>
+          {/* Mobile hamburger */}
+          <button onClick={() => setMobileMenuOpen(v => !v)} className={`md:hidden p-2 rounded-lg transition-colors ${scrolled ? 'text-foreground' : 'text-white'}`}>
+            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
         </div>
+
+        {/* Mobile drawer */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.2 }}
+              className="md:hidden bg-[#0D1B2E]/95 backdrop-blur-md border-t border-white/10"
+            >
+              <div className="px-6 py-4 flex flex-col gap-1">
+                {['Experience', 'About', 'Portfolio', 'Education', 'Contact'].map((item) => (
+                  <a key={item} href={`#${item.toLowerCase()}`}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`text-sm py-3 border-b border-white/[0.07] transition-colors ${activeSection === item.toLowerCase() ? 'text-[#C9A84C]' : 'text-white/70'}`}
+                  >
+                    {item}
+                  </a>
+                ))}
+                <a href="https://www.linkedin.com/in/skylerstein" target="_blank" rel="noreferrer"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-2 text-sm py-3 text-white/70 mt-1"
+                >
+                  <LinkedinIcon className="h-4 w-4" /> LinkedIn
+                </a>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.nav>
 
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
@@ -379,8 +410,9 @@ export default function Page() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
               </span>
-              <span className="text-[11px] uppercase tracking-[0.26em] text-white/60">
-                <Typewriter text="Searching for Public Service & Policy Opportunities" delay={0.8} />
+              <span className="text-[10px] md:text-[11px] uppercase tracking-[0.18em] md:tracking-[0.26em] text-white/60">
+                <span className="hidden sm:inline"><Typewriter text="Searching for Public Service & Policy Opportunities" delay={0.8} /></span>
+                <span className="sm:hidden">Public Service & Policy</span>
               </span>
             </motion.div>
 
@@ -410,7 +442,7 @@ export default function Page() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.2 }}
-              className="flex flex-wrap gap-3"
+              className="flex flex-col sm:flex-row flex-wrap gap-3"
             >
               <a
                 href="https://www.linkedin.com/in/skylerstein"
@@ -665,11 +697,11 @@ export default function Page() {
                 A young leader looking to begin a career in public service.
               </h2>
               {/* Photo grid — click any photo to open lightbox */}
-              <div className="grid grid-cols-2 gap-3 mt-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6">
                 {/* Wide banner */}
                 <button
                   onClick={() => setLightbox({ images: GALLERY_IMAGES, index: 0 })}
-                  className="col-span-2 rounded-xl overflow-hidden aspect-[3/2] group relative focus:outline-none"
+                  className="col-span-1 sm:col-span-2 rounded-xl overflow-hidden aspect-[3/2] group relative focus:outline-none"
                 >
                   <Image src={GALLERY_IMAGES[0].src} alt={GALLERY_IMAGES[0].alt} fill className="object-cover object-center group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
