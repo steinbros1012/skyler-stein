@@ -222,7 +222,7 @@ function ExperienceCard({ label, org, role, date, bullets, logo, photo, photoAlt
   return (
     <div className="group rounded-2xl border border-black/[0.07] bg-surface shadow-sm hover:shadow-md hover:border-[#C9A84C]/30 transition-all duration-300 overflow-hidden">
       {photo && (
-        <div className="w-full aspect-[5/2] overflow-hidden">
+        <div className="w-full h-48 overflow-hidden">
           <Image src={photo} alt={photoAlt ?? ''} width={1400} height={560} className={`w-full h-full object-cover ${photoPosition}`} />
         </div>
       )}
@@ -277,16 +277,18 @@ export default function Page() {
 
   useEffect(() => {
     const sections = ['experience', 'about', 'education', 'contact']
-    const observers = sections.map(id => {
-      const el = document.getElementById(id)
-      if (!el) return null
-      const obs = new IntersectionObserver(([entry]) => {
-        if (entry.isIntersecting) setActiveSection(id)
-      }, { threshold: 0.3 })
-      obs.observe(el)
-      return obs
-    })
-    return () => observers.forEach(o => o?.disconnect())
+    const onScroll = () => {
+      const scrollY = window.scrollY + 120
+      let current = ''
+      for (const id of sections) {
+        const el = document.getElementById(id)
+        if (el && el.offsetTop <= scrollY) current = id
+      }
+      setActiveSection(current)
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   return (
@@ -587,7 +589,7 @@ export default function Page() {
 
             <FadeIn delay={0.19}>
               <div className="group rounded-2xl border border-black/[0.07] bg-surface overflow-hidden hover:border-[#C9A84C]/30 hover:shadow-md shadow-sm transition-all duration-300">
-                <div className="w-full aspect-[5/2] overflow-hidden">
+                <div className="w-full h-48 overflow-hidden">
                   <Image src="/photos/photo-pnc.jpg" alt="Skyler at UNC System Boards of Trustees at PNC Arena" width={1400} height={560} className="w-full h-full object-cover object-[50%_30%]" />
                 </div>
                 <div className="p-7 md:p-9">
