@@ -400,43 +400,16 @@ export default function Page() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.15 }}
-              className="text-lg text-white/55 leading-relaxed max-w-lg mb-10"
+              className="text-lg text-white/55 leading-relaxed max-w-lg mb-8"
             >
               Political Science graduate from UNC Wilmington. Twice-elected Student Body President representing 19,000+ students. Experience interning in the U.S. House of Representatives and working on a U.S. Senate campaign. Searching for public service and policy opportunities in Washington, D.C. or Raleigh, N.C.
             </motion.p>
-
-            {/* Stats row */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.2 }}
-              className="flex flex-wrap gap-8 mb-10"
-            >
-              <div className="flex flex-col">
-                <span className="font-heading text-3xl font-semibold text-[#C9A84C]">
-                  <AnimatedCounter value={3.565} decimals={3} />
-                </span>
-                <span className="text-xs uppercase tracking-[0.2em] text-white/40 mt-0.5">GPA</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-heading text-3xl font-semibold text-[#C9A84C]">
-                  <AnimatedCounter value={2} suffix="×" />
-                </span>
-                <span className="text-xs uppercase tracking-[0.2em] text-white/40 mt-0.5">Elected</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-heading text-3xl font-semibold text-[#C9A84C]">
-                  <AnimatedCounter value={19} suffix="K+" />
-                </span>
-                <span className="text-xs uppercase tracking-[0.2em] text-white/40 mt-0.5">Students</span>
-              </div>
-            </motion.div>
 
             {/* CTAs */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.25 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
               className="flex flex-wrap gap-3"
             >
               <a
