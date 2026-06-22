@@ -49,6 +49,53 @@ body {
   width: 100%;
 }
 
+/* Animated gold shimmer text */
+.gold-shimmer {
+  background: linear-gradient(90deg, #C9A84C 0%, #f0d080 40%, #e8c060 50%, #f0d080 60%, #C9A84C 100%);
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer-text 3s linear infinite;
+}
+@keyframes shimmer-text {
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+/* Card hover shimmer sweep */
+.card-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.card-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.12) 50%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  transition: none;
+  pointer-events: none;
+}
+.card-shimmer:hover::after {
+  left: 160%;
+  transition: left 0.55s ease;
+}
+
+/* Subtle per-section background tints */
+#experience { background: linear-gradient(180deg, #F8F7F4 0%, #F5F6F8 100%); }
+#about      { background: linear-gradient(180deg, #F4F6FA 0%, #F5F6F8 100%); }
+#education  { background: linear-gradient(180deg, #FAF8F4 0%, #F5F6F8 100%); }
+#contact    { background: linear-gradient(180deg, #F5F6F8 0%, #F5F6F8 100%); }
+
 /* Noise texture overlay */
 .noise::before {
   content: '';

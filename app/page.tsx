@@ -220,7 +220,7 @@ interface ExperienceCardProps {
 
 function ExperienceCard({ label, org, role, date, bullets, logo, photo, photoAlt, photoPosition = 'object-center' }: ExperienceCardProps) {
   return (
-    <div className="group rounded-2xl border border-black/[0.07] bg-surface shadow-sm hover:shadow-md hover:border-[#C9A84C]/30 transition-all duration-300 overflow-hidden">
+    <div className="card-shimmer group rounded-2xl border border-black/[0.07] bg-surface shadow-sm hover:shadow-md hover:border-[#C9A84C]/30 transition-all duration-300 overflow-hidden">
       <div className="p-7 md:p-9">
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
         <div className="flex items-start gap-4">
@@ -392,7 +392,7 @@ export default function Page() {
               className="font-heading text-6xl md:text-7xl lg:text-8xl font-light leading-[0.92] tracking-[-0.02em] text-white mb-8"
             >
               Skyler<br />
-              <span className="italic text-[#C9A84C]">Stein</span>
+              <span className="italic gold-shimmer">Stein</span>
             </motion.h1>
 
             {/* Bio */}
@@ -589,7 +589,7 @@ export default function Page() {
 
             <FadeIn delay={0.19}>
               <TiltCard>
-              <div className="group rounded-2xl border border-black/[0.07] bg-surface p-7 md:p-9 hover:border-[#C9A84C]/30 hover:shadow-md shadow-sm transition-all duration-300">
+              <div className="card-shimmer group rounded-2xl border border-black/[0.07] bg-surface p-7 md:p-9 hover:border-[#C9A84C]/30 hover:shadow-md shadow-sm transition-all duration-300">
                 <div className="flex items-start gap-4 mb-8">
                   <div className="shrink-0 mt-1 flex items-center justify-center w-11 h-11 rounded-xl bg-white border border-black/[0.08] overflow-hidden p-1">
                     <img src="/logos/uncw.svg" alt="UNCW" className="w-full h-full object-contain" />
