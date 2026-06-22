@@ -221,15 +221,15 @@ interface ExperienceCardProps {
 function ExperienceCard({ label, org, role, date, bullets, logo, photo, photoAlt, photoPosition = 'object-center' }: ExperienceCardProps) {
   return (
     <div className="group rounded-2xl border border-black/[0.07] bg-surface shadow-sm hover:shadow-md hover:border-[#C9A84C]/30 transition-all duration-300 overflow-hidden">
-      {photo && (
-        <div className="w-full h-48 overflow-hidden">
-          <Image src={photo} alt={photoAlt ?? ''} width={1400} height={560} className={`w-full h-full object-cover ${photoPosition}`} />
-        </div>
-      )}
       <div className="p-7 md:p-9">
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
         <div className="flex items-start gap-4">
           {logo && <div className="shrink-0 mt-1">{logo}</div>}
+          {photo && (
+            <div className="shrink-0 mt-1 w-20 h-20 rounded-xl overflow-hidden border border-black/[0.08]">
+              <Image src={photo} alt={photoAlt ?? ''} width={80} height={80} className={`w-full h-full object-cover ${photoPosition}`} />
+            </div>
+          )}
           <div>
             <div className="flex items-center gap-3 mb-1">
               <span className="text-[10px] uppercase tracking-[0.24em] text-navy/50">{label}</span>
@@ -251,7 +251,6 @@ function ExperienceCard({ label, org, role, date, bullets, logo, photo, photoAlt
           </li>
         ))}
       </ul>
-      </div>
     </div>
   )
 }
@@ -588,14 +587,13 @@ export default function Page() {
             </FadeIn>
 
             <FadeIn delay={0.19}>
-              <div className="group rounded-2xl border border-black/[0.07] bg-surface overflow-hidden hover:border-[#C9A84C]/30 hover:shadow-md shadow-sm transition-all duration-300">
-                <div className="w-full h-48 overflow-hidden">
-                  <Image src="/photos/photo-pnc.jpg" alt="Skyler at UNC System Boards of Trustees at PNC Arena" width={1400} height={560} className="w-full h-full object-cover object-[50%_30%]" />
-                </div>
-                <div className="p-7 md:p-9">
+              <div className="group rounded-2xl border border-black/[0.07] bg-surface p-7 md:p-9 hover:border-[#C9A84C]/30 hover:shadow-md shadow-sm transition-all duration-300">
                 <div className="flex items-start gap-4 mb-8">
                   <div className="shrink-0 mt-1 flex items-center justify-center w-11 h-11 rounded-xl bg-white border border-black/[0.08] overflow-hidden p-1">
                     <img src="/logos/uncw.svg" alt="UNCW" className="w-full h-full object-contain" />
+                  </div>
+                  <div className="shrink-0 mt-1 w-20 h-20 rounded-xl overflow-hidden border border-black/[0.08]">
+                    <Image src="/photos/photo-pnc.jpg" alt="UNC System Boards of Trustees at PNC Arena" width={80} height={80} className="w-full h-full object-cover object-[50%_30%]" />
                   </div>
                   <div>
                     <div className="flex items-center gap-3 mb-1">
@@ -651,7 +649,6 @@ export default function Page() {
                       </li>
                     ))}
                   </ul>
-                </div>
                 </div>
               </div>
             </FadeIn>
