@@ -588,6 +588,7 @@ export default function Page() {
             </FadeIn>
 
             <FadeIn delay={0.19}>
+              <TiltCard>
               <div className="group rounded-2xl border border-black/[0.07] bg-surface p-7 md:p-9 hover:border-[#C9A84C]/30 hover:shadow-md shadow-sm transition-all duration-300">
                 <div className="flex items-start gap-4 mb-8">
                   <div className="shrink-0 mt-1 flex items-center justify-center w-11 h-11 rounded-xl bg-white border border-black/[0.08] overflow-hidden p-1">
@@ -652,10 +653,12 @@ export default function Page() {
                   </ul>
                 </div>
               </div>
+              </TiltCard>
             </FadeIn>
 
             {/* Endless Sports */}
             <FadeIn delay={0.22}>
+              <TiltCard>
               <ExperienceCard
                 label="Nonprofit · Volunteer"
                 org="Endless Sports"
@@ -673,6 +676,7 @@ export default function Page() {
                   'Support weekly events and athletic programs, helping ensure participants have a positive and inclusive experience',
                 ]}
               />
+              </TiltCard>
             </FadeIn>
           </div>
         </section>
