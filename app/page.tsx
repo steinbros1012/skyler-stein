@@ -1,7 +1,7 @@
 'use client'
 
-import { motion, useInView, useMotionValue, useSpring, animate } from 'framer-motion'
-import { ArrowUpRight, Mail, ChevronDown } from 'lucide-react'
+import { motion, useInView, useMotionValue, useSpring, animate, useScroll, useTransform } from 'framer-motion'
+import { ArrowUpRight, Mail, ChevronDown, Download } from 'lucide-react'
 import { useRef, useEffect, useState } from 'react'
 import Image from 'next/image'
 
@@ -23,6 +23,43 @@ function AnimatedCounter({ value, suffix = '', decimals = 0 }: { value: number; 
   }, [spring, decimals, suffix])
 
   return <span ref={ref}>0{suffix}</span>
+}
+
+// ─── Scroll progress bar ─────────────────────────────────────────────────────
+function ScrollProgress() {
+  const { scrollYProgress } = useScroll()
+  const scaleX = useSpring(scrollYProgress, { stiffness: 200, damping: 30 })
+  return (
+    <motion.div
+      style={{ scaleX, transformOrigin: '0%' }}
+      className="fixed top-0 left-0 right-0 h-[3px] bg-[#C9A84C] z-[100]"
+    />
+  )
+}
+
+// ─── Cursor spotlight ────────────────────────────────────────────────────────
+function CursorSpotlight() {
+  const x = useMotionValue(-400)
+  const y = useMotionValue(-400)
+
+  useEffect(() => {
+    const move = (e: MouseEvent) => { x.set(e.clientX); y.set(e.clientY) }
+    window.addEventListener('mousemove', move)
+    return () => window.removeEventListener('mousemove', move)
+  }, [x, y])
+
+  return (
+    <motion.div
+      className="pointer-events-none fixed inset-0 z-30"
+      style={{
+        background: useTransform(
+          [x, y],
+          ([cx, cy]) =>
+            `radial-gradient(400px circle at ${cx}px ${cy}px, rgba(201,168,76,0.07), transparent 70%)`
+        ),
+      }}
+    />
+  )
 }
 
 function LinkedinIcon({ className }: { className?: string }) {
@@ -94,7 +131,8 @@ interface ExperienceCardProps {
 
 function ExperienceCard({ label, org, role, date, bullets, logo }: ExperienceCardProps) {
   return (
-    <div className="group rounded-2xl border border-black/[0.07] bg-surface p-7 md:p-9 shadow-sm hover:shadow-md hover:border-[#C9A84C]/30 transition-all duration-300">
+    <div className="relative group rounded-2xl border border-black/[0.07] bg-surface p-7 md:p-9 shadow-sm hover:shadow-md hover:border-[#C9A84C]/30 transition-all duration-300">
+      <div className="hidden md:block absolute -left-[42px] top-9 h-3 w-3 rounded-full bg-[#C9A84C] ring-4 ring-[#F5F6F8]" />
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
         <div className="flex items-start gap-4">
           {logo && <div className="shrink-0 mt-1">{logo}</div>}
@@ -134,6 +172,8 @@ export default function Page() {
 
   return (
     <main className="min-h-screen overflow-x-hidden">
+      <ScrollProgress />
+      <CursorSpotlight />
 
       {/* ── NAV ───────────────────────────────────────────────────────────── */}
       <motion.nav
@@ -278,6 +318,14 @@ export default function Page() {
                 <Mail className="h-4 w-4" />
                 skylerstein22@gmail.com
               </a>
+              <a
+                href="/resume.pdf"
+                download
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.07] text-white/80 px-6 py-2.5 text-sm font-medium hover:border-white/40 hover:text-white transition-colors"
+              >
+                <Download className="h-4 w-4" />
+                Resume
+              </a>
             </motion.div>
           </div>
 
@@ -333,7 +381,11 @@ export default function Page() {
             </h2>
           </FadeIn>
 
-          <div className="space-y-6">
+          <div className="relative">
+            {/* Timeline line */}
+            <div className="absolute left-[11px] top-2 bottom-2 w-px bg-gradient-to-b from-[#C9A84C] via-[#C9A84C]/30 to-transparent hidden md:block" />
+
+          <div className="space-y-6 md:pl-10">
             <FadeIn delay={0.1}>
               <ExperienceCard
                 label="Current"
@@ -478,6 +530,7 @@ export default function Page() {
               />
             </FadeIn>
           </div>
+          </div>
         </section>
 
         <Divider />
@@ -488,7 +541,7 @@ export default function Page() {
             <FadeIn>
               <SectionLabel>About</SectionLabel>
               <h2 className="font-heading text-4xl md:text-5xl font-light text-foreground mb-8">
-                Four years in rooms where decisions get made.
+                A record built in public.
               </h2>
               {/* Photo grid */}
               <div className="grid grid-cols-2 gap-3 mt-6">
@@ -582,7 +635,7 @@ export default function Page() {
                   ].map((skill) => (
                     <span
                       key={skill}
-                      className="rounded-full border border-black/[0.08] bg-background px-3 py-1.5 text-xs text-foreground/70 hover:border-navy/20 hover:text-navy transition-colors duration-200"
+                      className="rounded-full border border-black/[0.08] bg-background px-3 py-1.5 text-xs text-foreground/70 hover:border-[#C9A84C] hover:bg-[#C9A84C] hover:text-[#0D1B2E] hover:font-medium transition-all duration-200 cursor-default"
                     >
                       {skill}
                     </span>
