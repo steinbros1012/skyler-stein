@@ -131,8 +131,7 @@ interface ExperienceCardProps {
 
 function ExperienceCard({ label, org, role, date, bullets, logo }: ExperienceCardProps) {
   return (
-    <div className="relative group rounded-2xl border border-black/[0.07] bg-surface p-7 md:p-9 shadow-sm hover:shadow-md hover:border-[#C9A84C]/30 transition-all duration-300">
-      <div className="hidden md:block absolute -left-[42px] top-9 h-3 w-3 rounded-full bg-[#C9A84C] ring-4 ring-[#F5F6F8]" />
+    <div className="group rounded-2xl border border-black/[0.07] bg-surface p-7 md:p-9 shadow-sm hover:shadow-md hover:border-[#C9A84C]/30 transition-all duration-300">
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
         <div className="flex items-start gap-4">
           {logo && <div className="shrink-0 mt-1">{logo}</div>}
@@ -381,11 +380,7 @@ export default function Page() {
             </h2>
           </FadeIn>
 
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-[11px] top-2 bottom-2 w-px bg-gradient-to-b from-[#C9A84C] via-[#C9A84C]/30 to-transparent hidden md:block" />
-
-          <div className="space-y-6 md:pl-10">
+          <div className="space-y-6">
             <FadeIn delay={0.1}>
               <ExperienceCard
                 label="Current"
@@ -530,7 +525,6 @@ export default function Page() {
               />
             </FadeIn>
           </div>
-          </div>
         </section>
 
         <Divider />
@@ -541,7 +535,7 @@ export default function Page() {
             <FadeIn>
               <SectionLabel>About</SectionLabel>
               <h2 className="font-heading text-4xl md:text-5xl font-light text-foreground mb-8">
-                A record built in public.
+                From Apex to Washington, and back.
               </h2>
               {/* Photo grid */}
               <div className="grid grid-cols-2 gap-3 mt-6">
