@@ -542,6 +542,27 @@ export default function Page() {
             <FadeIn delay={0.13}>
               <TiltCard>
                 <ExperienceCard
+                  label="Campaign"
+                  org="NC Coordinated Campaign"
+                  role="Campus Organizing Fellow"
+                  date="April 2026 – May 2026"
+                  logo={
+                    <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-white border border-black/[0.08] overflow-hidden p-0.5">
+                      <img src="/logos/nc-campaign.svg" alt="NC Coordinated Campaign" className="w-full h-full object-contain" />
+                    </div>
+                  }
+                  bullets={[
+                    'Built relationships with student voters, campus organizations, and university stakeholders for a statewide coordinated campaign',
+                    'Supported voter outreach through direct voter contact, event staffing, and voter education on a campus of over 19,000 students',
+                    'Connected campus-based organizing to broader electoral and youth engagement strategy',
+                  ]}
+                />
+              </TiltCard>
+            </FadeIn>
+
+            <FadeIn delay={0.16}>
+              <TiltCard>
+                <ExperienceCard
                   label="Federal"
                   org="US House of Representatives"
                   role="Legislative Intern"
@@ -559,27 +580,6 @@ export default function Page() {
                     'Drafted and edited constituent correspondence on federal issues',
                     'Attended committee hearings, briefings, and floor proceedings, summarizing key takeaways',
                     'Conducted Capitol tours and aided visiting constituents',
-                  ]}
-                />
-              </TiltCard>
-            </FadeIn>
-
-            <FadeIn delay={0.16}>
-              <TiltCard>
-                <ExperienceCard
-                  label="Campaign"
-                  org="NC Coordinated Campaign"
-                  role="Campus Organizing Fellow"
-                  date="April 2026 – May 2026"
-                  logo={
-                    <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-white border border-black/[0.08] overflow-hidden p-0.5">
-                      <img src="/logos/nc-campaign.svg" alt="NC Coordinated Campaign" className="w-full h-full object-contain" />
-                    </div>
-                  }
-                  bullets={[
-                    'Built relationships with student voters, campus organizations, and university stakeholders for a statewide coordinated campaign',
-                    'Supported voter outreach through direct voter contact, event staffing, and voter education on a campus of over 19,000 students',
-                    'Connected campus-based organizing to broader electoral and youth engagement strategy',
                   ]}
                 />
               </TiltCard>
