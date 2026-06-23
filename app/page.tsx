@@ -453,14 +453,24 @@ export default function Page() {
 
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
       <section className="relative min-h-screen flex items-center overflow-hidden bg-[#0D1B2E]">
-        {/* Mesh gradient orbs */}
+        {/* Ken Burns walking photo background */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full bg-[radial-gradient(circle,rgba(27,58,107,0.7),transparent_65%)] blur-3xl" />
-          <div className="absolute -bottom-20 -left-40 w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,rgba(27,58,107,0.5),transparent_65%)] blur-3xl" />
-          <div className="absolute top-1/3 left-1/3 w-[400px] h-[400px] rounded-full bg-[radial-gradient(circle,rgba(201,168,76,0.06),transparent_65%)] blur-3xl" />
+          <div className="ken-burns absolute inset-[-8%]">
+            <Image
+              src="/photos/photo-walking.jpg"
+              alt=""
+              fill
+              className="object-cover object-[60%_20%]"
+              priority
+            />
+          </div>
+          {/* Dark overlay so text stays readable */}
+          <div className="absolute inset-0 bg-[#0D1B2E]/70" />
+          {/* Subtle navy gradient from left */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0D1B2E]/80 via-[#0D1B2E]/40 to-transparent" />
         </div>
         {/* Grid overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_80%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_80%)]" />
         {/* Bottom fade to page background */}
         <div className="absolute bottom-0 inset-x-0 h-48 bg-gradient-to-b from-transparent to-[#F5F6F8] pointer-events-none" />
 

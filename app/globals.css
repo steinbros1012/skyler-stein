@@ -90,6 +90,17 @@ body {
   transition: left 0.55s ease;
 }
 
+/* Ken Burns walking animation */
+@keyframes ken-burns {
+  0%   { transform: scale(1.08) translate(3%, 2%); }
+  50%  { transform: scale(1.14) translate(-2%, -1%); }
+  100% { transform: scale(1.08) translate(3%, 2%); }
+}
+.ken-burns {
+  animation: ken-burns 18s ease-in-out infinite;
+  transform-origin: center center;
+}
+
 /* Subtle per-section background tints */
 #experience { background: linear-gradient(180deg, #F8F7F4 0%, #F5F6F8 100%); }
 #about      { background: linear-gradient(180deg, #F4F6FA 0%, #F5F6F8 100%); }
