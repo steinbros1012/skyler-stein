@@ -460,8 +460,8 @@ export default function Page() {
             className="ken-burns absolute inset-[-8%]"
             style={{
               backgroundImage: 'url(/photos/photo-walking.jpg)',
-              backgroundSize: '38%',
-              backgroundPosition: '60% 25%',
+              backgroundSize: '42%',
+              backgroundPosition: '65% 10%',
               backgroundRepeat: 'no-repeat',
               backgroundColor: '#0D1B2E',
             }}
