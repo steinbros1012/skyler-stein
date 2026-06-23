@@ -455,18 +455,21 @@ export default function Page() {
       <section className="relative min-h-screen flex items-center overflow-hidden bg-[#0D1B2E]">
         {/* Ken Burns walking photo background */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {/* Walking photo — right side, zoomed out, blended */}
           <div
             className="ken-burns absolute inset-[-8%]"
             style={{
               backgroundImage: 'url(/photos/photo-walking.jpg)',
-              backgroundSize: 'cover',
-              backgroundPosition: '50% 28%',
+              backgroundSize: '38%',
+              backgroundPosition: 'right 15%',
+              backgroundRepeat: 'no-repeat',
+              backgroundColor: '#0D1B2E',
             }}
           />
-          {/* Dark overlay so text stays readable */}
-          <div className="absolute inset-0 bg-[#0D1B2E]/65" />
-          {/* Subtle navy gradient from left */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0D1B2E]/80 via-[#0D1B2E]/30 to-transparent" />
+          {/* Blend photo into background from left and bottom */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0D1B2E] via-[#0D1B2E]/60 to-[#0D1B2E]/10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0D1B2E]/60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-transparent to-[#0D1B2E]/30" />
         </div>
         {/* Grid overlay */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_80%)]" />
