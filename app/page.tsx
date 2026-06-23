@@ -493,7 +493,7 @@ export default function Page() {
               transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="font-heading text-6xl md:text-7xl lg:text-8xl font-light leading-[0.92] tracking-[-0.02em] text-white mb-8"
             >
-              Skyler<br />
+              Skyler A.<br />
               <span className="italic gold-shimmer">Stein</span>
             </motion.h1>
 
