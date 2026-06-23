@@ -461,7 +461,7 @@ export default function Page() {
             style={{
               backgroundImage: 'url(/photos/photo-walking.jpg)',
               backgroundSize: '38%',
-              backgroundPosition: 'right 25%',
+              backgroundPosition: '60% 25%',
               backgroundRepeat: 'no-repeat',
               backgroundColor: '#0D1B2E',
             }}
