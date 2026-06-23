@@ -781,7 +781,7 @@ export default function Page() {
                 {/* Capitol + PNC */}
                 {[3, 4].map((i) => (
                   <button key={i} onClick={() => setLightbox({ images: GALLERY_IMAGES, index: i })} className="rounded-xl overflow-hidden aspect-[3/2] group relative focus:outline-none">
-                    <Image src={GALLERY_IMAGES[i].src} alt={GALLERY_IMAGES[i].alt} fill className="object-cover object-top group-hover:scale-105 transition-transform duration-500" />
+                    <Image src={GALLERY_IMAGES[i].src} alt={GALLERY_IMAGES[i].alt} fill className={`object-cover group-hover:scale-105 transition-transform duration-500 ${i === 3 ? 'object-[50%_70%]' : 'object-[50%_30%]'}`} />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
                       <span className="text-white text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300">View</span>
                     </div>
