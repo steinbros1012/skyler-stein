@@ -92,9 +92,9 @@ body {
 
 /* Ken Burns walking animation */
 @keyframes ken-burns {
-  0%   { transform: scale(1.08) translate(3%, 2%); }
-  50%  { transform: scale(1.14) translate(-2%, -1%); }
-  100% { transform: scale(1.08) translate(3%, 2%); }
+  0%   { transform: scale(1.08) translate(2%, 0%); }
+  50%  { transform: scale(1.12) translate(-2%, 0%); }
+  100% { transform: scale(1.08) translate(2%, 0%); }
 }
 .ken-burns {
   animation: ken-burns 18s ease-in-out infinite;
