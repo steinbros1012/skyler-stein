@@ -4,6 +4,7 @@ import { motion, useInView, useMotionValue, useSpring, animate, useScroll, useTr
 import { ArrowUpRight, Mail, ChevronDown, Download, X, ChevronLeft, ChevronRight, Menu } from 'lucide-react'
 import { useRef, useEffect, useState, useCallback } from 'react'
 import Image from 'next/image'
+import PAPER_CONTENT from './paperContent'
 
 // ─── Typewriter ───────────────────────────────────────────────────────────────
 function Typewriter({ text, delay = 0 }: { text: string; delay?: number }) {
@@ -63,6 +64,63 @@ function Lightbox({ images, index: initialIndex, onClose }: LightboxProps) {
       >
         <img src={images[index].src} alt={images[index].alt} className="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl" />
         <p className="text-center text-white/40 text-sm mt-3">{images[index].alt}</p>
+      </motion.div>
+    </motion.div>
+  )
+}
+
+// ─── Paper reader modal ──────────────────────────────────────────────────────
+interface PaperReaderProps {
+  title: string
+  type: string
+  paragraphs: string[]
+  file: string
+  onClose: () => void
+}
+function PaperReader({ title, type, paragraphs, file, onClose }: PaperReaderProps) {
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+    window.addEventListener('keydown', handler)
+    document.body.style.overflow = 'hidden'
+    return () => { window.removeEventListener('keydown', handler); document.body.style.overflow = '' }
+  }, [onClose])
+  return (
+    <motion.div
+      initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[200] bg-black/80 backdrop-blur-md flex items-center justify-center p-4 md:p-8"
+      onClick={onClose}
+    >
+      <motion.div
+        initial={{ opacity: 0, y: 20, scale: 0.97 }} animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.97 }} transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+        className="bg-background rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] flex flex-col overflow-hidden"
+        onClick={e => e.stopPropagation()}
+      >
+        {/* Header */}
+        <div className="flex items-start justify-between gap-4 p-6 md:p-8 border-b border-black/[0.07] shrink-0">
+          <div>
+            <span className="text-[10px] uppercase tracking-[0.22em] text-[#C9A84C] font-medium block mb-1">{type}</span>
+            <h2 className="font-heading text-xl md:text-2xl font-medium text-foreground leading-snug">{title}</h2>
+          </div>
+          <div className="flex items-center gap-3 shrink-0">
+            <a href={file} download className="inline-flex items-center gap-1.5 text-xs text-muted border border-black/[0.1] rounded-full px-4 py-2 hover:border-[#C9A84C] hover:text-[#C9A84C] transition-colors">
+              <Download className="h-3.5 w-3.5" /> Download
+            </a>
+            <button onClick={onClose} className="text-muted hover:text-foreground transition-colors p-1">
+              <X className="h-5 w-5" />
+            </button>
+          </div>
+        </div>
+        {/* Body */}
+        <div className="overflow-y-auto p-6 md:p-8 md:px-12">
+          <div className="prose prose-sm max-w-none space-y-4">
+            {paragraphs.map((para, i) => (
+              <p key={i} className={`leading-relaxed text-foreground/75 ${i === 0 ? 'font-heading text-lg font-medium text-foreground' : 'text-[15px]'}`}>
+                {para}
+              </p>
+            ))}
+          </div>
+        </div>
       </motion.div>
     </motion.div>
   )
@@ -278,6 +336,7 @@ export default function Page() {
   const [activeSection, setActiveSection] = useState('')
   const [lightbox, setLightbox] = useState<{ images: { src: string; alt: string }[]; index: number } | null>(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [paperReader, setPaperReader] = useState<{ title: string; type: string; key: string; file: string } | null>(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -307,6 +366,15 @@ export default function Page() {
       <CursorSpotlight />
       <AnimatePresence>
         {lightbox && <Lightbox images={lightbox.images} index={lightbox.index} onClose={() => setLightbox(null)} />}
+        {paperReader && (
+          <PaperReader
+            title={paperReader.title}
+            type={paperReader.type}
+            paragraphs={PAPER_CONTENT[paperReader.key] ?? []}
+            file={paperReader.file}
+            onClose={() => setPaperReader(null)}
+          />
+        )}
       </AnimatePresence>
 
       {/* ── NAV ───────────────────────────────────────────────────────────── */}
@@ -773,6 +841,7 @@ export default function Page() {
                 title: 'Cobalt and Capitalism',
                 description: 'Argues that the global green energy transition depends on exploitative cobalt extraction in the DRC, challenging the moral framing of the electric vehicle revolution.',
                 type: 'Research Paper',
+                contentKey: 'cobalt',
                 file: '/portfolio/cobalt-and-capitalism.docx',
                 accent: 'text-emerald-700',
                 border: 'hover:border-emerald-300/50',
@@ -782,6 +851,7 @@ export default function Page() {
                 title: 'Affordable Housing in America',
                 description: 'A full policy analysis examining the U.S. affordable housing crisis, evaluating existing interventions, and proposing targeted solutions for urban accessibility.',
                 type: 'Policy Analysis',
+                contentKey: 'housing',
                 file: '/portfolio/affordable-housing-policy.docx',
                 accent: 'text-blue-700',
                 border: 'hover:border-blue-300/50',
@@ -791,6 +861,7 @@ export default function Page() {
                 title: 'AI Regulation Policy Memo',
                 description: 'A professional policy memo analyzing the federal AI regulatory landscape and recommending strategic positioning for enterprise stakeholders amid Congressional debate.',
                 type: 'Policy Memo',
+                contentKey: 'ai',
                 file: '/portfolio/ai-regulation-memo.docx',
                 accent: 'text-violet-700',
                 border: 'hover:border-violet-300/50',
@@ -800,6 +871,7 @@ export default function Page() {
                 title: 'Party Affiliation Among College Students',
                 description: 'Senior capstone research examining what explains political party affiliation among college students, with a focus on high school background as an explanatory variable.',
                 type: 'Research Paper',
+                contentKey: 'party',
                 file: '/portfolio/party-affiliation-research.docx',
                 accent: 'text-amber-700',
                 border: 'hover:border-amber-300/50',
@@ -809,6 +881,7 @@ export default function Page() {
                 title: 'Nuclear Proliferation: Three Models',
                 description: "A critical essay examining Scott Sagan's three-model framework for nuclear proliferation, evaluating the security, domestic politics, and norms models against case evidence.",
                 type: 'Critical Essay',
+                contentKey: 'nuclear',
                 file: '/portfolio/nuclear-proliferation-essay.docx',
                 accent: 'text-rose-700',
                 border: 'hover:border-rose-300/50',
@@ -817,19 +890,18 @@ export default function Page() {
             ].map((item) => (
               <FadeIn key={item.title} delay={0.05}>
                 <TiltCard>
-                  <a
-                    href={item.file}
-                    download
-                    className={`card-shimmer group flex flex-col h-full rounded-2xl border border-black/[0.07] bg-surface p-7 shadow-sm hover:shadow-md ${item.border} transition-all duration-300 border-l-4 ${item.leftBorder}`}
+                  <button
+                    onClick={() => setPaperReader({ title: item.title, type: item.type, key: item.contentKey, file: item.file })}
+                    className={`card-shimmer group flex flex-col h-full w-full text-left rounded-2xl border border-black/[0.07] bg-surface p-7 shadow-sm hover:shadow-md ${item.border} transition-all duration-300 border-l-4 ${item.leftBorder}`}
                   >
                     <span className={`text-[10px] uppercase tracking-[0.22em] font-medium mb-3 block ${item.accent}`}>{item.type}</span>
                     <h3 className="font-heading text-lg font-medium text-foreground mb-4 leading-snug">{item.title}</h3>
                     <p className="text-sm text-foreground/60 leading-relaxed flex-1">{item.description}</p>
                     <div className="flex items-center gap-1.5 mt-6 text-xs text-muted/50 group-hover:text-[#C9A84C] transition-colors">
-                      <Download className="h-3.5 w-3.5" />
-                      <span>Download</span>
+                      <ArrowUpRight className="h-3.5 w-3.5" />
+                      <span>Read paper</span>
                     </div>
-                  </a>
+                  </button>
                 </TiltCard>
               </FadeIn>
             ))}
