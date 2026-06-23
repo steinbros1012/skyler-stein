@@ -455,20 +455,18 @@ export default function Page() {
       <section className="relative min-h-screen flex items-center overflow-hidden bg-[#0D1B2E]">
         {/* Ken Burns walking photo background */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="ken-burns absolute inset-[-8%]">
-            <Image
-              src="/photos/photo-walking.jpg"
-              alt=""
-              fill
-              className="object-cover"
-              style={{ objectPosition: '72% 28%' }}
-              priority
-            />
-          </div>
+          <div
+            className="ken-burns absolute inset-[-8%]"
+            style={{
+              backgroundImage: 'url(/photos/photo-walking.jpg)',
+              backgroundSize: 'cover',
+              backgroundPosition: '68% 25%',
+            }}
+          />
           {/* Dark overlay so text stays readable */}
-          <div className="absolute inset-0 bg-[#0D1B2E]/70" />
+          <div className="absolute inset-0 bg-[#0D1B2E]/65" />
           {/* Subtle navy gradient from left */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0D1B2E]/80 via-[#0D1B2E]/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0D1B2E]/80 via-[#0D1B2E]/30 to-transparent" />
         </div>
         {/* Grid overlay */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_80%)]" />
