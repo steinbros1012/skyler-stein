@@ -644,9 +644,6 @@ export default function Page() {
                   org="US House of Representatives"
                   role="Legislative Intern"
                   date="Summer 2025"
-                  photo="/photos/photo-capitol.jpg"
-                  photoAlt="Skyler at the US Capitol"
-                  photoPosition="object-[50%_30%]"
                   logo={
                     <div className="flex items-center justify-center w-11 h-11 rounded-xl bg-white border border-black/[0.08] overflow-hidden p-0.5">
                       <img src="/logos/house.svg" alt="US House of Representatives" className="w-full h-full object-contain" />
@@ -668,9 +665,6 @@ export default function Page() {
                 <div className="flex items-start gap-4 mb-8">
                   <div className="shrink-0 mt-1 flex items-center justify-center w-11 h-11 rounded-xl bg-white border border-black/[0.08] overflow-hidden p-1">
                     <img src="/logos/uncw.svg" alt="UNCW" className="w-full h-full object-contain" />
-                  </div>
-                  <div className="shrink-0 mt-1 w-20 h-20 rounded-xl overflow-hidden border border-black/[0.08]">
-                    <Image src="/photos/photo-pnc.jpg" alt="UNC System Boards of Trustees at PNC Arena" width={80} height={80} className="w-full h-full object-cover object-[50%_30%]" />
                   </div>
                   <div>
                     <div className="flex items-center gap-3 mb-1">
@@ -767,37 +761,32 @@ export default function Page() {
                 A young leader looking to begin a career in public service.
               </h2>
               {/* Photo grid — click any photo to open lightbox */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6">
-                {/* Wide banner */}
-                <button
-                  onClick={() => setLightbox({ images: GALLERY_IMAGES, index: 0 })}
-                  className="col-span-1 sm:col-span-2 rounded-xl overflow-hidden aspect-[3/2] group relative focus:outline-none"
-                >
+              <div className="grid grid-cols-2 gap-3 mt-6">
+                {/* Wide banner — convocation */}
+                <button onClick={() => setLightbox({ images: GALLERY_IMAGES, index: 0 })} className="col-span-2 rounded-xl overflow-hidden aspect-[3/2] group relative focus:outline-none">
                   <Image src={GALLERY_IMAGES[0].src} alt={GALLERY_IMAGES[0].alt} fill className="object-cover object-center group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
                     <span className="text-white text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300">View</span>
                   </div>
                 </button>
-                {/* Board photo */}
-                <button
-                  onClick={() => setLightbox({ images: GALLERY_IMAGES, index: 1 })}
-                  className="rounded-xl overflow-hidden aspect-[3/2] group relative focus:outline-none"
-                >
-                  <Image src={GALLERY_IMAGES[1].src} alt={GALLERY_IMAGES[1].alt} fill className="object-cover object-top group-hover:scale-105 transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
-                    <span className="text-white text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300">View</span>
-                  </div>
-                </button>
-                {/* Lacrosse photo */}
-                <button
-                  onClick={() => setLightbox({ images: GALLERY_IMAGES, index: 2 })}
-                  className="rounded-xl overflow-hidden aspect-[3/2] group relative focus:outline-none"
-                >
-                  <Image src={GALLERY_IMAGES[2].src} alt={GALLERY_IMAGES[2].alt} fill className="object-cover object-[50%_20%] group-hover:scale-105 transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
-                    <span className="text-white text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300">View</span>
-                  </div>
-                </button>
+                {/* Board + Lacrosse */}
+                {[1, 2].map((i) => (
+                  <button key={i} onClick={() => setLightbox({ images: GALLERY_IMAGES, index: i })} className="rounded-xl overflow-hidden aspect-[3/2] group relative focus:outline-none">
+                    <Image src={GALLERY_IMAGES[i].src} alt={GALLERY_IMAGES[i].alt} fill className={`object-cover group-hover:scale-105 transition-transform duration-500 ${i === 2 ? 'object-[50%_20%]' : 'object-top'}`} />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                      <span className="text-white text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300">View</span>
+                    </div>
+                  </button>
+                ))}
+                {/* Capitol + PNC */}
+                {[3, 4].map((i) => (
+                  <button key={i} onClick={() => setLightbox({ images: GALLERY_IMAGES, index: i })} className="rounded-xl overflow-hidden aspect-[3/2] group relative focus:outline-none">
+                    <Image src={GALLERY_IMAGES[i].src} alt={GALLERY_IMAGES[i].alt} fill className="object-cover object-top group-hover:scale-105 transition-transform duration-500" />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                      <span className="text-white text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300">View</span>
+                    </div>
+                  </button>
+                ))}
               </div>
             </FadeIn>
             <FadeIn delay={0.1}>
