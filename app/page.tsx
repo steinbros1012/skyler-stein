@@ -461,7 +461,7 @@ export default function Page() {
             style={{
               backgroundImage: 'url(/photos/photo-walking.jpg)',
               backgroundSize: '38%',
-              backgroundPosition: 'right 15%',
+              backgroundPosition: 'right 5%',
               backgroundRepeat: 'no-repeat',
               backgroundColor: '#0D1B2E',
             }}
@@ -477,9 +477,9 @@ export default function Page() {
         <div className="absolute bottom-0 inset-x-0 h-48 bg-gradient-to-b from-transparent to-[#F5F6F8] pointer-events-none" />
 
         <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-10 pt-32 pb-24 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="max-w-2xl">
 
-          {/* Left — text */}
+          {/* Text */}
           <div>
             {/* Badge */}
             <motion.div
@@ -553,31 +553,6 @@ export default function Page() {
             </motion.div>
           </div>
 
-          {/* Right — headshot */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.97 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="flex justify-center lg:justify-end"
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5, y: 80, rotate: -12, filter: 'blur(8px)' }}
-              animate={{ opacity: 1, scale: 1, y: 0, rotate: 0, filter: 'blur(0px)' }}
-              transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="relative"
-            >
-              <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-navy/20 via-navy/5 to-transparent blur-sm" />
-              <div className="relative w-72 h-72 md:w-80 md:h-80 rounded-full overflow-hidden border border-navy/[0.12]">
-                <Image
-                  src="/headshot.jpg"
-                  alt="Skyler Stein"
-                  fill
-                  className="object-cover object-top"
-                  priority
-                />
-              </div>
-            </motion.div>
-          </motion.div>
 
           </div>
 
