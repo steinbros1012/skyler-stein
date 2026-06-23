@@ -504,7 +504,7 @@ export default function Page() {
               transition={{ duration: 0.4, delay: 0.15 }}
               className="text-lg text-white/55 leading-relaxed max-w-lg mb-8"
             >
-              Political Science graduate from UNC Wilmington. Twice-elected Student Body President representing 19,000+ students. Experience interning in the U.S. House of Representatives and working on a U.S. Senate campaign. Searching for public service and policy opportunities in Washington, D.C. or Raleigh, N.C.
+              From the classroom to the Capitol — a young leader looking to build a career in public service.
             </motion.p>
 
             {/* CTAs */}
