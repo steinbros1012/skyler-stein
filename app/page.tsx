@@ -460,7 +460,7 @@ export default function Page() {
               src="/photos/photo-walking.jpg"
               alt=""
               fill
-              className="object-cover object-[50%_28%]"
+              className="object-cover object-[72%_28%]"
               priority
             />
           </div>
