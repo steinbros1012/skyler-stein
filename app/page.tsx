@@ -4,7 +4,7 @@ import { motion, useInView, useMotionValue, useSpring, animate, useScroll, useTr
 import { ArrowUpRight, Mail, ChevronDown, Download, X, ChevronLeft, ChevronRight, Menu } from 'lucide-react'
 import { useRef, useEffect, useState, useCallback } from 'react'
 import Image from 'next/image'
-import PAPER_CONTENT from './paperContent'
+import PAPER_CONTENT from './paperContent.json'
 
 // ─── Typewriter ───────────────────────────────────────────────────────────────
 function Typewriter({ text, delay = 0 }: { text: string; delay?: number }) {
