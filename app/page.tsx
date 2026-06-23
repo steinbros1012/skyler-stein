@@ -466,10 +466,11 @@ export default function Page() {
               backgroundColor: '#0D1B2E',
             }}
           />
-          {/* Blend photo into background from left and bottom */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0D1B2E] via-[#0D1B2E]/60 to-[#0D1B2E]/10" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0D1B2E]/60" />
-          <div className="absolute inset-0 bg-gradient-to-t from-transparent to-[#0D1B2E]/30" />
+          {/* Blend all edges into navy */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0D1B2E] via-[#0D1B2E]/70 to-[#0D1B2E]/40" />
+          <div className="absolute inset-0 bg-gradient-to-l from-[#0D1B2E]/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0D1B2E]/40 via-transparent to-[#0D1B2E]/80" />
+          <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-[#0D1B2E]/50" />
         </div>
         {/* Grid overlay */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_80%)]" />
