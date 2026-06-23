@@ -131,6 +131,13 @@ function CursorSpotlight() {
   const x = useMotionValue(-400)
   const y = useMotionValue(-400)
   const [isTouch, setIsTouch] = useState(false)
+  // Must call useTransform before any conditional return (Rules of Hooks)
+  const bg = useTransform(
+    [x, y],
+    ([cx, cy]) =>
+      `radial-gradient(400px circle at ${cx}px ${cy}px, rgba(201,168,76,0.07), transparent 70%)`
+  )
+
   useEffect(() => { setIsTouch(window.matchMedia('(hover: none)').matches) }, [])
 
   useEffect(() => {
@@ -145,13 +152,7 @@ function CursorSpotlight() {
   return (
     <motion.div
       className="pointer-events-none fixed inset-0 z-30"
-      style={{
-        background: useTransform(
-          [x, y],
-          ([cx, cy]) =>
-            `radial-gradient(400px circle at ${cx}px ${cy}px, rgba(201,168,76,0.07), transparent 70%)`
-        ),
-      }}
+      style={{ background: bg }}
     />
   )
 }
