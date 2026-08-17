@@ -25,12 +25,12 @@ const Link = (text, url) =>
 const Bullet = (children, level = 0) =>
   new Paragraph({ numbering: { reference: 'abbBullets', level }, spacing: SP, children });
 
-// centered placeholder standing in for an image
+// production placeholder marking where art drops in
 const ImageSlot = (note) =>
   new Paragraph({
     spacing: SP,
     alignment: AlignmentType.CENTER,
-    children: [T(note, { italics: true, color: '808080' })],
+    children: [T(note, { italics: true })],
   });
 
 const Caption = (text) =>
@@ -39,11 +39,6 @@ const Caption = (text) =>
     alignment: AlignmentType.CENTER,
     children: [T(text, { bold: true, italics: true, size: 20 })],
   });
-
-// editorial note for the team — gray so it is easy to spot and delete
-const Note = (text) => P([T(text, { italics: true, color: '808080' })]);
-const NoteBullet = (text, level = 1) =>
-  Bullet([T(text, { italics: true, color: '808080' })], level);
 
 const doc = new Document({
   creator: 'ABB in Action',
@@ -106,12 +101,12 @@ const doc = new Document({
         // ── Note from ABB Team (headliner: Smithsonian) ─────────────
         Label('[Note from ABB Team]'),
         P([
-          T('As the United States marks 250 years, one of the country’s most recognizable institutions is running on newly modernized, American-made electrical infrastructure. ABB '),
+          T('One hundred fifty years ago, America celebrated its 100th birthday with the Centennial Exhibition in Philadelphia – a showcase of what the country could build. The Smithsonian brought those collections home to Washington and put up a building to hold them: the Arts and Industries Building, opened in 1881 and still the second-oldest structure on the Smithsonian campus. As the nation marks 250 years, ABB '),
           Link(
-            'upgraded the critical power systems',
+            'modernized the building’s electrical systems',
             'https://new.abb.com/news/detail/136933/abb-modernizes-smithsonians-electrical-systems-as-the-united-states-marks-250-years'
           ),
-          T(' at the Smithsonian Institution’s Arts and Industries Building in Washington, D.C. – the museum’s second-oldest structure, opened in 1881 as a showcase for American invention – ahead of the building’s reopening to the public for the semiquincentennial.'),
+          T(' so it could open its doors again.'),
         ]),
         Blank(),
         P([
@@ -127,11 +122,11 @@ const doc = new Document({
           T('Voices and Votes', { italics: true }),
           T(' exhibition, the Folklife Marketplace, and the '),
           T('For the Common Good: Smithsonian Voices on Our Shared Future 250', { italics: true }),
-          T(' conversation series. Nearly 150 years after it first opened its doors to show the country what America could build, the building is doing it again – this time powered by equipment built by American workers in South Carolina.'),
+          T(' conversation series. The building that was raised to hold the artifacts of America’s 100th birthday is now powering its 250th – on equipment built by American workers in South Carolina.'),
         ]),
         Blank(),
-        ImageSlot('[IMAGE TK: Arts and Industries Building exterior, or ABB crew on site — confirm Smithsonian image rights before use]'),
-        Caption('[Caption TK: names and titles of anyone pictured, per house style]'),
+        ImageSlot('[IMAGE TK]'),
+        Caption('[Caption TK]'),
         Blank(),
 
         // ── Features ────────────────────────────────────────────────
@@ -141,25 +136,25 @@ const doc = new Document({
         P([
           T('In the latest episode of '),
           T('Watts Brewing', { italics: true }),
-          T(' [LINK TK]', { italics: true, color: '808080' }),
-          T(', ABB Electrification President Giampiero Frisio traveled to Ellendale, North Dakota, to walk the Applied Digital campus with Chief Development Officer Todd Gale. Their conversation covers why AI is being called this generation’s space race, what it actually takes to build data centers fast enough to keep up with demand, and how the right partnerships get AI-ready infrastructure delivered faster.'),
+          T(' [LINK TK]', { italics: true }),
+          T(', ABB Electrification Business Area President Giampiero Frisio traveled to Ellendale, North Dakota, to walk the Applied Digital campus with Chief Development Officer Todd Gale. Their conversation covers why AI is being called this generation’s space race, what it actually takes to build data centers fast enough to keep up with demand, and how the right partnerships get AI-ready infrastructure delivered faster.'),
         ]),
         Blank(),
         P([
-          T('The Ellendale campus is a 400 MW greenfield build in Dickey County, and ABB is supplying the power backbone under an '),
+          T('Polaris Forge 1 is a 400 MW AI factory campus in Dickey County, and ABB has supplied the power backbone since the '),
           Link(
-            'expanded partnership with Applied Digital',
-            'https://new.abb.com/news/detail/131324/abb-expands-power-technology-partnership-with-applied-digital-for-ai-ready-data-centers'
+            'partnership was announced',
+            'https://new.abb.com/news/detail/126792/abb-and-applied-digital-accelerate-ai-ready-data-centers'
           ),
-          T(', anchored by the HiPerGuard medium-voltage static UPS – the first power system built specifically for AI-scale data centers. Shifting the architecture from low voltage to medium voltage lets the campus scale in 25 MW blocks with fewer conversion points and less cabling, which raises power density and energy efficiency while compressing the electrical plant footprint. Fewer conversion points also means fewer things that can fail.'),
+          T('. At the center of it is ABB’s HiPerGuard medium-voltage static UPS, purpose-built for the power profiles of AI and high-performance computing workloads. Shifting the architecture from low voltage to medium voltage lets the campus scale in 25 MW blocks with less cabling and fewer conversion points, which raises power density and energy efficiency while compressing the electrical plant footprint. Fewer conversion points also means fewer things that can fail. The first of three contracted buildings at the campus is now fully energized at 100 MW.'),
         ]),
         Blank(),
         P([
-          T('That efficiency is the whole point in a state where you cannot simply order up new generation. For a rural county of a few thousand people, it also means construction jobs, permanent operations jobs, and a tax base that did not exist five years ago.'),
+          T('The two companies have since expanded the partnership to a second North Dakota site – Polaris Forge 2, a 300 MW campus near Harwood phased across two buildings coming online in 2026 and 2027. That efficiency is the whole point in a state where you cannot simply order up new generation. For rural counties of a few thousand people, it also means construction jobs, permanent operations jobs, and a tax base that did not exist five years ago.'),
         ]),
         Blank(),
-        ImageSlot('[IMAGE TK: still from the Watts Brewing episode — Frisio and Gale on the Ellendale campus]'),
-        Caption('ABB Electrification Business Area President Giampiero Frisio and Applied Digital Chief Development Officer Todd Gale at Applied Digital’s AI data center campus in Ellendale, North Dakota'),
+        ImageSlot('[IMAGE TK]'),
+        Caption('ABB Electrification Business Area President Giampiero Frisio and Applied Digital Chief Development Officer Todd Gale at Applied Digital’s Polaris Forge 1 campus in Ellendale, North Dakota'),
         Blank(),
 
         Head('The Accelerate America 250+ Tour Brings ABB Technology Coast to Coast'),
@@ -173,12 +168,10 @@ const doc = new Document({
         ]),
         Blank(),
         P([
-          T('Fall stops include Indianapolis (September 25–28), Las Vegas (September 28–30 and October 4–7), Columbus (October 22–24), and Spokane (October 26–29), following an earlier stop in Chicago in May. Roughly 75–80% of what ABB sells in the U.S. is made in the U.S. – the tour is built to make that concrete, one stop at a time.'),
+          T('The tour opened in Chicago in the spring and runs through the fall, with stops in Indianapolis, Las Vegas, Columbus, and Spokane. Roughly 75–80% of what ABB sells in the U.S. is made in the U.S. – the tour is built to make that concrete, one stop at a time.'),
         ]),
         Blank(),
-        Note('[DRAFTING NOTE: Tour name and coast-to-coast framing are confirmed. The stop list above came from a secondary source and needs a check against the official schedule — please confirm cities, dates, and whether any of these are co-located with trade shows. Also send me the tour landing page URL and I will hyperlink the name, plus any spokespeople, hiring/training announcements, or elected officials attending, and I will work them in.]'),
-        Blank(),
-        ImageSlot('[IMAGE TK: tour vehicle, exhibit floor, or employee photo from a stop]'),
+        ImageSlot('[IMAGE TK]'),
         Caption('[Caption TK]'),
         Blank(),
 
@@ -196,9 +189,6 @@ const doc = new Document({
             T('ABB CEO Morten Wierod on the shortage of skilled workers available to build AI data centers, how the industry meets rising power demand, and what can be done to bring facility power consumption down.'),
           ],
           1
-        ),
-        NoteBullet(
-          '[CONFIRM: this is the June 4 hit — the last issue already ran the April 22 CNBC interview, so this is the next one up. If you meant a Q2 earnings interview from the week of July 16, I could not find it in search; send the link and I will swap it in. Record $12B orders and the $5.5B Rotork acquisition would give us a stronger investment hook.]'
         ),
         Bullet([
           T('June 2026 | Control Global: '),
@@ -240,23 +230,7 @@ const doc = new Document({
           T(': Thought leadership conference convening business, government, and civil society on climate action | New York City, New York (September 2026)'),
         ]),
         Blank(),
-        ImageSlot('[CLOSING GRAPHIC TK: the last issue closed on the NASCAR San Diego promo, which is now stale. Suggest an Accelerate America 250+ Tour banner.]'),
-        Blank(),
-        Blank(),
-
-        // ── Open items ──────────────────────────────────────────────
-        Label('[Open Items — delete before send]'),
-        Bullet([T('Send date for the masthead.')]),
-        Bullet([T('Watts Brewing Ellendale episode link — it is referenced in Giampiero’s LinkedIn post but I could not surface the URL.')]),
-        Bullet([T('Accelerate America 250+ Tour: confirm the stop list and dates against the official schedule, and send the tour landing page so I can link it.')]),
-        Bullet([T('Confirm the CNBC hit (June 4 vs. a Q2 earnings interview I could not locate).')]),
-        Bullet([
-          T('Sourcing flag on the Ellendale feature: HiPerGuard is designed and largely produced in Napier, New Zealand. The efficiency and jobs framing holds, but we should not let it read as an American-manufacturing example the way the Smithsonian and New Berlin items do.'),
-        ]),
-        Bullet([
-          T('Heads-up on the Tech Briefs item: ABB Robotics is being divested to SoftBank, close expected mid-to-late 2026, and the division is already reported as discontinued operations. Worth a check with Comms on whether we want to feature robotics in a U.S. policy newsletter right now.'),
-        ]),
-        Bullet([T('Smithsonian image rights, and confirm the Robredo title as written.')]),
+        ImageSlot('[CLOSING GRAPHIC TK]'),
       ],
     },
   ],
