@@ -125,8 +125,8 @@ const doc = new Document({
           T(' conversation series. The building that was raised to hold the artifacts of America’s 100th birthday is now powering its 250th – on equipment built by American workers in South Carolina.'),
         ]),
         Blank(),
-        ImageSlot('[IMAGE TK]'),
-        Caption('[Caption TK]'),
+        ImageSlot('[IMAGE TBD]'),
+        Caption('[Caption TBD]'),
         Blank(),
 
         // ── Features ────────────────────────────────────────────────
@@ -136,7 +136,7 @@ const doc = new Document({
         P([
           T('In the latest episode of '),
           T('Watts Brewing', { italics: true }),
-          T(' [LINK TK]', { italics: true }),
+          T(' [LINK TBD]', { italics: true }),
           T(', ABB Electrification Business Area President Giampiero Frisio traveled to Ellendale, North Dakota, to walk the Applied Digital campus with Chief Development Officer Todd Gale. Their conversation covers why AI is being called this generation’s space race, what it actually takes to build data centers fast enough to keep up with demand, and how the right partnerships get AI-ready infrastructure delivered faster.'),
         ]),
         Blank(),
@@ -153,7 +153,7 @@ const doc = new Document({
           T('The two companies have since expanded the partnership to a second North Dakota site – Polaris Forge 2, a 300 MW campus near Harwood phased across two buildings coming online in 2026 and 2027. That efficiency is the whole point in a state where you cannot simply order up new generation. For rural counties of a few thousand people, it also means construction jobs, permanent operations jobs, and a tax base that did not exist five years ago.'),
         ]),
         Blank(),
-        ImageSlot('[IMAGE TK]'),
+        ImageSlot('[IMAGE TBD]'),
         Caption('ABB Electrification Business Area President Giampiero Frisio and Applied Digital Chief Development Officer Todd Gale at Applied Digital’s Polaris Forge 1 campus in Ellendale, North Dakota'),
         Blank(),
 
@@ -171,8 +171,8 @@ const doc = new Document({
           T('The tour opened in Chicago in the spring and runs through the fall, with stops in Indianapolis, Las Vegas, Columbus, and Spokane. Roughly 75–80% of what ABB sells in the U.S. is made in the U.S. – the tour is built to make that concrete, one stop at a time.'),
         ]),
         Blank(),
-        ImageSlot('[IMAGE TK]'),
-        Caption('[Caption TK]'),
+        ImageSlot('[IMAGE TBD]'),
+        Caption('[Caption TBD]'),
         Blank(),
 
         // ── ABB in the News ─────────────────────────────────────────
@@ -230,7 +230,7 @@ const doc = new Document({
           T(': Thought leadership conference convening business, government, and civil society on climate action | New York City, New York (September 2026)'),
         ]),
         Blank(),
-        ImageSlot('[CLOSING GRAPHIC TK]'),
+        ImageSlot('[CLOSING GRAPHIC TBD]'),
       ],
     },
   ],
