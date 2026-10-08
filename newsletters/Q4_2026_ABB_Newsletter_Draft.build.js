@@ -101,15 +101,15 @@ const doc = new Document({
         // ── Note from ABB Team: the fall DC/NY run ──────────────────
         Label('[Note from ABB Team]'),
         P([
-          T('Two rooms, five days apart, made the case for electrification to two very different audiences this fall. On September 16, the Embassy of Switzerland in Washington hosted its 25th annual Soirée Suisse, the signature evening where Swiss companies show American policymakers, diplomats, and press what Swiss innovation looks like on the ground in the United States. ABB brought the hardware: the NASCAR electric prototype built under the ABB NASCAR Electrification Innovation Partnership, with veteran NASCAR driver David Ragan on hand to walk guests through it. Hosted by ABB’s U.S. Government Relations team, the activation put high-performance electric racing – an all-wheel-drive, 78 kWh machine that out-accelerates the gas cars it shares a garage with – directly in front of the people who write energy policy.'),
+          T('Two rooms, six days apart, made the case for electrification to two very different audiences this fall. On September 16, the Embassy of Switzerland in Washington hosted its 25th annual Soirée Suisse, the signature evening where Swiss companies show American policymakers, diplomats, and press what Swiss innovation looks like on the ground in the United States. ABB brought the hardware: the NASCAR electric prototype built under the ABB NASCAR Electrification Innovation Partnership, with veteran NASCAR driver David Ragan on hand to walk guests through it. Hosted by ABB’s U.S. Government Relations team, the activation put high-performance electric racing – an all-wheel-drive, 78 kWh machine that out-accelerates the gas cars it shares a garage with – directly in front of the people who write energy policy.'),
         ]),
         Blank(),
         P([
-          T('Five days later in New York, Brandon Spencer, President of ABB’s Motion Business Area, was on the ground for Climate Week NYC, meeting with policymakers, NGOs, media, and customers on accelerating electrification and scaling the technologies an efficient energy system depends on. [SESSION DETAIL TBD – panel name, co-panelists, and the line we want pulled out.]'),
+          T('Six days later in New York, ABB took the harder question to Climate Week NYC. At Sustainability LIVE on September 22, ABB joined Alfa Laval, Digital Realty, and Compass Datacenters at the Javits Center for “New Frontiers in Data Center Efficiency,” a midday panel on how engineering, cooling technology, and cross-sector collaboration can get more compute out of each unit of energy – and on whether data centers can become active participants in the energy system rather than simply loads on it. [ABB PANELIST TBD – pre-event listings named Tuomo Hoysniemi, President of ABB’s Drive Products Division; confirm whether he or Brandon Spencer took the seat, and send any other ABB sessions.]'),
         ]),
         Blank(),
         P([
-          T('The through-line in both rooms was efficiency. Electricity accounts for just over 20% of final energy demand today, and the “35 by 35” goal would push that to 35% by 2035 – a target ABB supports, and one that gets met less by building new supply than by getting more out of what is already installed.'),
+          T('The through-line in both rooms was efficiency. In his Climate Week opening keynote, International Energy Agency Executive Director Fatih Birol set out a “35 by 35” electrification target – lifting electricity from just over 20% of final energy demand today to 35% by 2035. “35 by 35 will be the real target,” he said. Meeting it depends far less on building new supply than on getting more out of what is already installed, which is the case ABB has been making all year.'),
         ]),
         Blank(),
         ImageSlot('[IMAGE TBD]'),
@@ -168,7 +168,7 @@ const doc = new Document({
         P([T('Be on the lookout for ABB at future events connecting leaders on electrification and manufacturing:')]),
         Bullet([
           T('The Visioneers with Zay Harding', { italics: true }),
-          T(': ABB featured on CBS’s weekly eco-innovation series, with ABB Vice President of Strategic Partnerships Chris Shigas on [SEGMENT TOPIC TBD] | CBS (Saturday, November 7, 2026)'),
+          T(': ABB Vice President of Strategic Partnerships Chris Shigas takes CBS’s weekly eco-innovation series inside the NASCAR electric prototype – the same car that drew a crowd at the Swiss Embassy in September | CBS (Saturday, November 7, 2026)'),
         ]),
         Bullet([
           T('[ADDITIONAL EVENT TBD]: [Description] | [City, State] ([Date])'),
