@@ -94,7 +94,7 @@ const doc = new Document({
         // ── Subject line ────────────────────────────────────────────
         Label('[Subject Line]'),
         Bullet([
-          T('ABB in Action: A Race Car at the Swiss Embassy, Climate Week in New York, What’s Next in Albuquerque, and ABB on CBS'),
+          T('ABB in Action: A Race Car at the Swiss Embassy, Climate Week in New York, Sen. Heinrich in Albuquerque, and ABB on CBS'),
         ]),
         Blank(),
 
@@ -122,22 +122,22 @@ const doc = new Document({
         // ── Features ────────────────────────────────────────────────
         Label('[Features]'),
 
-        Head('[HEADLINE TBD] — Albuquerque'),
+        Head('Sen. Martin Heinrich Hosts ABB in Albuquerque'),
         P([
-          T('[LEDE TBD – what is happening in Albuquerque, on what date, and who is attending.]'),
+          T('On [DATE TBD], ABB will join Senator Martin Heinrich in Albuquerque for [EVENT FORMAT TBD – ribbon cutting, tour, roundtable]. Heinrich is the Ranking Member of the Senate Energy and Natural Resources Committee and one of four senators behind the bipartisan American Affordability and Jobs Act introduced in September, a bill pitched on cheaper energy, more jobs, and responsible growth. Albuquerque is a fitting place to make that case. [ADDITIONAL ATTENDEES AND ANNOUNCEMENT TBD.]'),
         ]),
         Blank(),
         P([
-          T('Background we can build on: ABB Installation Products opened a '),
+          T('ABB Installation Products opened a '),
           Link(
-            'more than $40 million plant in Albuquerque',
+            'more than $40 million plant in the city',
             'https://new.abb.com/news/detail/125108/abb-opens-40-million-manufacturing-facility-in-new-mexico'
           ),
-          T(' in April 2025, a 90,000-square-foot facility building Elastimold cable accessories and Fisher Pierce circuit solutions – the components utilities use to harden the grid and keep power on. ABB has since put roughly $15 million more into equipment upgrades and automation at the site. The Albuquerque campus employs more than 565 people.'),
+          T(' in April 2025 – 90,000 square feet building Elastimold cable accessories and Fisher Pierce circuit solutions, the unglamorous components utilities depend on to harden the grid and keep the lights on through storms and fire season. ABB has since put roughly $15 million more into equipment upgrades and automation at the site, and the Albuquerque campus now employs more than 565 people.'),
         ]),
         Blank(),
         P([
-          T('[CLOSING TBD – the jobs number, the capacity added, and the local and congressional angle.] It is the same argument the rest of this year has made in Wisconsin, South Carolina, and North Carolina: the equipment that holds up the American grid is increasingly built by Americans, in American plants.'),
+          T('That is the argument in one building: the hardware a senator writing national energy policy cares about is being built by New Mexicans, in New Mexico. It is the same case ABB has made this year in Wisconsin, South Carolina, and North Carolina – and the reason the company keeps making it is that reliability and domestic manufacturing turn out to be the same conversation.'),
         ]),
         Blank(),
         ImageSlot('[IMAGE TBD]'),
