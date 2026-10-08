@@ -94,14 +94,14 @@ const doc = new Document({
         // ── Subject line ────────────────────────────────────────────
         Label('[Subject Line]'),
         Bullet([
-          T('ABB in Action: Soirée Suisse and Climate Week, What’s Next in Albuquerque, and ABB on CBS'),
+          T('ABB in Action: A Race Car at the Swiss Embassy, Climate Week in New York, What’s Next in Albuquerque, and ABB on CBS'),
         ]),
         Blank(),
 
         // ── Note from ABB Team: the fall DC/NY run ──────────────────
         Label('[Note from ABB Team]'),
         P([
-          T('Two rooms, five days apart, made the case for electrification to two very different audiences this fall. On September 16, the Embassy of Switzerland in Washington hosted its 25th annual Soirée Suisse, the signature evening where Swiss companies show American policymakers, diplomats, and press what Swiss innovation looks like on the ground in the United States. ABB [ACTIVITY TBD – what we showed, who attended, any principals on site].'),
+          T('Two rooms, five days apart, made the case for electrification to two very different audiences this fall. On September 16, the Embassy of Switzerland in Washington hosted its 25th annual Soirée Suisse, the signature evening where Swiss companies show American policymakers, diplomats, and press what Swiss innovation looks like on the ground in the United States. ABB brought the hardware: the NASCAR electric prototype built under the ABB NASCAR Electrification Innovation Partnership, with veteran NASCAR driver David Ragan on hand to walk guests through it. Hosted by ABB’s U.S. Government Relations team, the activation put high-performance electric racing – an all-wheel-drive, 78 kWh machine that out-accelerates the gas cars it shares a garage with – directly in front of the people who write energy policy.'),
         ]),
         Blank(),
         P([
@@ -155,9 +155,9 @@ const doc = new Document({
         ]),
         Bullet(
           [
-            T('Brandon Spencer, President of ABB’s Motion Business Area, joins '),
-            T('The Close', { italics: true }),
-            T(' to discuss Infinitus, ABB’s new direct-current power portfolio for AI data centers, and why next-generation racks could draw as much as one megawatt each – roughly five to six times today’s levels.'),
+            T('Brandon Spencer, President of ABB’s Motion Business Area, joins Romaine Bostick and Bailey Lipschultz on '),
+            T('Bloomberg Markets: The Close', { italics: true }),
+            T(' to discuss Infinitus, ABB’s new direct-current portfolio for AI data centers. As rack-level demand climbs toward a megawatt apiece – five to six times today’s levels – Spencer makes the case that DC distribution, built on more than 25 years of ABB work in mission-critical facilities, is how operators get more compute out of the power they already have.'),
           ],
           1
         ),
