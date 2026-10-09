@@ -101,15 +101,15 @@ const doc = new Document({
         // ── Note from ABB Team: the fall DC/NY run ──────────────────
         Label('[Note from ABB Team]'),
         P([
-          T('Two rooms, six days apart, made the case for electrification to two very different audiences this fall. On September 16, the Embassy of Switzerland in Washington hosted its 25th annual Soirée Suisse, the signature evening where Swiss companies show American policymakers, diplomats, and press what Swiss innovation looks like on the ground in the United States. ABB brought the hardware: the NASCAR electric prototype built under the ABB NASCAR Electrification Innovation Partnership, with veteran NASCAR driver David Ragan on hand to walk guests through it. Hosted by ABB’s U.S. Government Relations team, the activation put high-performance electric racing – an all-wheel-drive, 78 kWh machine that out-accelerates the gas cars it shares a garage with – directly in front of the people who write energy policy.'),
+          T('Two rooms, six days apart, put ABB in front of two very different audiences this fall. On September 16, the Embassy of Switzerland in Washington hosted the 25th annual Soirée Suisse. ABB’s activation featured electric vehicle technology from its NASCAR partnership, with a race car on site and NASCAR driver David Ragan in attendance. [TBD – confirm what we showed and how we framed it, which ABB leaders hosted and attended, who the audience was, and anything announced on the night.]'),
         ]),
         Blank(),
         P([
-          T('Six days later in New York, ABB took the harder question to Climate Week NYC. At Sustainability LIVE on September 22, ABB joined Alfa Laval, Digital Realty, and Compass Datacenters at the Javits Center for “New Frontiers in Data Center Efficiency,” a midday panel on how engineering, cooling technology, and cross-sector collaboration can get more compute out of each unit of energy – and on whether data centers can become active participants in the energy system rather than simply loads on it. [ABB PANELIST TBD – pre-event listings named Tuomo Hoysniemi, President of ABB’s Drive Products Division; confirm whether he or Brandon Spencer took the seat, and send any other ABB sessions.]'),
+          T('Six days later in New York, ABB took part in Climate Week NYC. [TBD – confirm which sessions ABB joined, who represented us, and the points we want pulled out. What research turned up, unconfirmed: pre-event listings for Sustainability LIVE at the Javits Center place ABB on “New Frontiers in Data Center Efficiency,” a 12:15–13:00 panel on September 22 with Alfa Laval, Digital Realty, and Compass Datacenters, framed on getting more compute out of each unit of energy. The speakers page named Tuomo Hoysniemi, President of ABB’s Drive Products Division; the agenda listed the lineup as TBC. Nothing confirms who actually spoke.]'),
         ]),
         Blank(),
         P([
-          T('The through-line in both rooms was efficiency. In his Climate Week opening keynote, International Energy Agency Executive Director Fatih Birol set out a “35 by 35” electrification target – lifting electricity from just over 20% of final energy demand today to 35% by 2035. “35 by 35 will be the real target,” he said. Meeting it depends far less on building new supply than on getting more out of what is already installed, which is the case ABB has been making all year.'),
+          T('Efficiency ran through the week. In his Climate Week opening keynote, International Energy Agency Executive Director Fatih Birol set out a “35 by 35” electrification target – lifting electricity from just over 20% of final energy demand today to 35% by 2035. “35 by 35 will be the real target,” he said. Meeting it depends far less on building new supply than on getting more out of what is already installed, which is the case ABB has been making all year.'),
         ]),
         Blank(),
         ImageSlot('[IMAGE TBD]'),
@@ -124,7 +124,7 @@ const doc = new Document({
 
         Head('Sen. Martin Heinrich Hosts ABB in Albuquerque'),
         P([
-          T('On [DATE TBD], ABB will join Senator Martin Heinrich in Albuquerque for [EVENT FORMAT TBD – ribbon cutting, tour, roundtable]. Heinrich is the Ranking Member of the Senate Energy and Natural Resources Committee and one of four senators behind the bipartisan American Affordability and Jobs Act introduced in September, a bill pitched on cheaper energy, more jobs, and responsible growth. Albuquerque is a fitting place to make that case. [ADDITIONAL ATTENDEES AND ANNOUNCEMENT TBD.]'),
+          T('On [DATE TBD], ABB will join Senator Martin Heinrich in Albuquerque for [EVENT FORMAT TBD – ribbon cutting, tour, roundtable]. Heinrich is the Ranking Member of the Senate Energy and Natural Resources Committee. [TBD – who else is attending, what is being announced, and what the program covers.]'),
         ]),
         Blank(),
         P([
@@ -133,11 +133,11 @@ const doc = new Document({
             'more than $40 million plant in the city',
             'https://new.abb.com/news/detail/125108/abb-opens-40-million-manufacturing-facility-in-new-mexico'
           ),
-          T(' in April 2025 – 90,000 square feet building Elastimold cable accessories and Fisher Pierce circuit solutions, the unglamorous components utilities depend on to harden the grid and keep the lights on through storms and fire season. ABB has since put roughly $15 million more into equipment upgrades and automation at the site, and the Albuquerque campus now employs more than 565 people.'),
+          T(' in April 2025 – 90,000 square feet building Elastimold cable accessories and Fisher Pierce circuit solutions, the components utilities depend on to harden the grid and keep power on. ABB has since put roughly $15 million more into equipment upgrades and automation at the site, and the Albuquerque campus employs more than 565 people.'),
         ]),
         Blank(),
         P([
-          T('That is the argument in one building: the hardware a senator writing national energy policy cares about is being built by New Mexicans, in New Mexico. It is the same case ABB has made this year in Wisconsin, South Carolina, and North Carolina – and the reason the company keeps making it is that reliability and domestic manufacturing turn out to be the same conversation.'),
+          T('The through-line with Wisconsin, South Carolina, and North Carolina is the same one ABB has drawn all year: the equipment that holds up the American grid is increasingly built in American plants, by American workers.'),
         ]),
         Blank(),
         ImageSlot('[IMAGE TBD]'),
@@ -157,7 +157,7 @@ const doc = new Document({
           [
             T('Brandon Spencer, President of ABB’s Motion Business Area, joins Romaine Bostick and Bailey Lipschultz on '),
             T('Bloomberg Markets: The Close', { italics: true }),
-            T(' to discuss Infinitus, ABB’s new direct-current portfolio for AI data centers. As rack-level demand climbs toward a megawatt apiece – five to six times today’s levels – Spencer makes the case that DC distribution, built on more than 25 years of ABB work in mission-critical facilities, is how operators get more compute out of the power they already have.'),
+            T(' to discuss Infinitus, ABB’s new direct-current portfolio for AI data centers. Spencer describes rack-level power demand climbing toward roughly one megawatt per rack – five to six times today’s levels – and where DC distribution fits in meeting it.'),
           ],
           1
         ),
@@ -168,7 +168,7 @@ const doc = new Document({
         P([T('Be on the lookout for ABB at future events connecting leaders on electrification and manufacturing:')]),
         Bullet([
           T('The Visioneers with Zay Harding', { italics: true }),
-          T(': ABB Vice President of Strategic Partnerships Chris Shigas takes CBS’s weekly eco-innovation series inside the NASCAR electric prototype – the same car that drew a crowd at the Swiss Embassy in September | CBS (Saturday, November 7, 2026)'),
+          T(': ABB Vice President of Strategic Partnerships Chris Shigas takes CBS’s weekly eco-innovation series inside the NASCAR EV prototype | CBS (November 7, 2026)'),
         ]),
         Bullet([
           T('[ADDITIONAL EVENT TBD]: [Description] | [City, State] ([Date])'),
