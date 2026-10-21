@@ -9,23 +9,16 @@ const SP = { after: 0, line: 240, lineRule: 'auto' };
 const P = (children, opts = {}) => new Paragraph({ spacing: SP, children, ...opts });
 const T = (text, opts = {}) => new TextRun({ text, ...opts });
 
-// bracketed section label, e.g. [Features]
 const Label = (text) => P([T(text, { bold: true, italics: true })]);
-
-// bold sub-headline for a feature
 const Head = (text) => P([T(text, { bold: true })]);
-
 const Blank = () => P([]);
 
-// hyperlink styled like the reference (Hyperlink char style)
 const Link = (text, url) =>
   new ExternalHyperlink({ link: url, children: [T(text, { style: 'Hyperlink' })] });
 
-// bullet, level 0 or 1, on the shared "abbBullets" numbering
 const Bullet = (children, level = 0) =>
   new Paragraph({ numbering: { reference: 'abbBullets', level }, spacing: SP, children });
 
-// production placeholder marking where art drops in
 const ImageSlot = (note) =>
   new Paragraph({
     spacing: SP,
@@ -83,68 +76,88 @@ const doc = new Document({
         },
       },
       children: [
-        // ── Masthead ────────────────────────────────────────────────
         new Paragraph({
           spacing: SP,
           alignment: AlignmentType.CENTER,
-          children: [T('ABB IN ACTION | NEWSLETTER 10.XX.2026', { bold: true, underline: {} })],
+          children: [T('ABB IN ACTION | NEWSLETTER 10.20.2026', { bold: true, underline: {} })],
         }),
         Blank(),
 
         // ── Subject line ────────────────────────────────────────────
         Label('[Subject Line]'),
         Bullet([
-          T('ABB in Action: A Race Car at the Swiss Embassy, Climate Week in New York, Sen. Heinrich in Albuquerque, and ABB on CBS'),
+          T('ABB in Action: Sen. Heinrich on the Factory Floor, Ten Years in Senatobia, and Powering What Comes Next'),
         ]),
         Blank(),
 
-        // ── Note from ABB Team: the fall DC/NY run ──────────────────
+        // ── I. Building the grid here: Albuquerque + Senatobia ──────
         Label('[Note from ABB Team]'),
         P([
-          T('Two rooms, six days apart, put ABB in front of two very different audiences this fall. On September 16, the Embassy of Switzerland in Washington hosted the 25th annual Soirée Suisse. ABB’s activation featured electric vehicle technology from its NASCAR partnership, with a race car on site and NASCAR driver David Ragan in attendance. [TBD – confirm what we showed and how we framed it, which ABB leaders hosted and attended, who the audience was, and anything announced on the night.]'),
+          T('On October 12, Senator Martin Heinrich came to ABB’s Elastimold plant in Albuquerque. The Ranking Member of the Senate Energy and Natural Resources Committee '),
+          Link(
+            'joined a roundtable hosted by ABB and the National Association of Manufacturers',
+            'https://www.energy.senate.gov/newsroom/press/heinrich-meets-with-new-mexicans-to-discuss-how-landmark-bipartisan-legislation-will-lower-costs-create-jobs-hold-data-centers-accountable/'
+          ),
+          T(' and walked the floor – five stations where he could pick up the hardware and see how it gets built. “We need permitting reform to put more electrons on the grid,” Heinrich said. “It results in more jobs.”'),
         ]),
         Blank(),
         P([
-          T('Six days later in New York, ABB took part in Climate Week NYC. [TBD – confirm which sessions ABB joined, who represented us, and the points we want pulled out. What research turned up, unconfirmed: pre-event listings for Sustainability LIVE at the Javits Center place ABB on “New Frontiers in Data Center Efficiency,” a 12:15–13:00 panel on September 22 with Alfa Laval, Digital Realty, and Compass Datacenters, framed on getting more compute out of each unit of energy. The speakers page named Tuomo Hoysniemi, President of ABB’s Drive Products Division; the agenda listed the lineup as TBC. Nothing confirms who actually spoke.]'),
+          T('He was there to make the case for the Bipartisan American Affordability and Jobs Act of 2026, which he introduced with Senators Lee, Capito, and Whitehouse. The bill speeds federal review of energy projects, requires data centers to pay for their own grid upgrades and their share of the existing grid, and targets an interconnection queue where, by the sponsors’ accounting, 83% of the projects waiting are clean energy. The plant was the argument: Elastimold cable accessories and Fisher Pierce circuit solutions are the hardware that connects what the queue is holding up. [TBD – who else joined the roundtable, and the permitting-reform points we want pulled out. Also: “Jay” said he wished every factory tour was like that one – confirm full name and title (NAM’s Jay Timmons?) so we can use it.]'),
         ]),
         Blank(),
         P([
-          T('Efficiency ran through the week. In his Climate Week opening keynote, International Energy Agency Executive Director Fatih Birol set out a “35 by 35” electrification target – lifting electricity from just over 20% of final energy demand today to 35% by 2035. “35 by 35 will be the real target,” he said. Meeting it depends far less on building new supply than on getting more out of what is already installed, which is the case ABB has been making all year.'),
+          T('In Senatobia, Mississippi, ABB marked ten years at its circuit breaker factory and '),
+          Link(
+            'cut the ribbon on a new building that doubles the site’s footprint',
+            'https://new.abb.com/news/detail/139398/engineered-for-america-senatobia-a-decade-of-helping-u-s-industries-outrun'
+          ),
+          T('. Governor Tate Reeves, Congressman Trent Kelly, Mayor Greg Graves, and Swiss Consul General Rolf Ott all came. Kelly took a private tour and met with senior staff and with workers on the line. The $55 million project adds automated production lines, new technology and quality controls, employee training, and renovations to the existing plant, and ABB expects to hire roughly 200 more skilled employees over the coming year – on top of the 1,200 already working there. [SENATOBIA DATE TBD.]'),
         ]),
         Blank(),
-        ImageSlot('[IMAGE TBD]'),
+        P([
+          T('The day before, ABB hosted more than 60 U.S. customers in Oxford, who came through the plant to see the new SACE Emax 3 air circuit breaker. NEMA President and CEO Debra Phillips and Consul General Ott filmed a '),
+          T('Watts Brewing', { italics: true }),
+          T(' segment on site, over sweet tea. ABB also announced a donation to [COMMUNITY COLLEGE TBD – confirm recipient and amount]. Roughly $100 million has gone into the Senatobia site [TBD – your notes say over seven years; ABB’s own materials date the site to 2016 and the anniversary to ten years. Confirm which framing we want.]'),
+        ]),
+        Blank(),
+        ImageSlot('[IMAGE TBD – Heinrich on the Albuquerque floor]'),
         Caption('[Caption TBD]'),
         Blank(),
-        ImageSlot('[IMAGE TBD]'),
+        ImageSlot('[IMAGE TBD – Senatobia ribbon cutting]'),
         Caption('[Caption TBD]'),
         Blank(),
 
-        // ── Features ────────────────────────────────────────────────
+        // ── II. Powering Growth ─────────────────────────────────────
         Label('[Features]'),
 
-        Head('Sen. Martin Heinrich Hosts ABB in Albuquerque'),
+        Head('Powering Growth: Where the Demand Is Coming From'),
         P([
-          T('On [DATE TBD], ABB will join Senator Martin Heinrich in Albuquerque for [EVENT FORMAT TBD – ribbon cutting, tour, roundtable]. Heinrich is the Ranking Member of the Senate Energy and Natural Resources Committee. [TBD – who else is attending, what is being announced, and what the program covers.]'),
+          T('On September 15, ABB exhibited at the Congressional Grid Innovation Expo in the Rayburn House Office Building, hosted by NEMA, the GridWise Alliance, and the American Critical Minerals Association in conjunction with the House Grid Innovation Caucus. The premise of the morning was a number: electric load demand is projected to rise 55% by 2050. [TBD – what ABB showed on the floor, which Members and staff came through, and anything that came out of it.]'),
         ]),
         Blank(),
         P([
-          T('ABB Installation Products opened a '),
-          Link(
-            'more than $40 million plant in the city',
-            'https://new.abb.com/news/detail/125108/abb-opens-40-million-manufacturing-facility-in-new-mexico'
-          ),
-          T(' in April 2025 – 90,000 square feet building Elastimold cable accessories and Fisher Pierce circuit solutions, the components utilities depend on to harden the grid and keep power on. ABB has since put roughly $15 million more into equipment upgrades and automation at the site, and the Albuquerque campus employs more than 565 people.'),
+          T('A week later, ABB took the same question to Climate Week NYC. [TBD – confirm which sessions ABB joined and who represented us; Cody [LAST NAME AND TITLE TBD] attended. Unconfirmed from research: pre-event listings place ABB on “New Frontiers in Data Center Efficiency,” a 12:15–13:00 panel at Sustainability LIVE at the Javits Center on September 22 with Alfa Laval, Digital Realty, and Compass Datacenters.] Brandon Spencer’s Bloomberg interview that week is below.'),
         ]),
         Blank(),
         P([
-          T('The through-line with Wisconsin, South Carolina, and North Carolina is the same one ABB has drawn all year: the equipment that holds up the American grid is increasingly built in American plants, by American workers.'),
+          T('The thread from the Rayburn Foyer to the Javits Center is one argument: demand is rising across every sector at once, and the fastest capacity available is the efficiency already sitting in installed equipment. In his Climate Week opening keynote, International Energy Agency Executive Director Fatih Birol set out a “35 by 35” target – lifting electricity from just over 20% of final energy demand today to 35% by 2035. “35 by 35 will be the real target,” he said.'),
+        ]),
+        Blank(),
+        ImageSlot('[IMAGE TBD – Climate Week, per Ryan’s note]'),
+        Caption('[Caption TBD]'),
+        Blank(),
+
+        // ── III. Soirée Suisse ──────────────────────────────────────
+        Head('A Race Car at the Swiss Embassy'),
+        P([
+          T('On September 16, ABB brought a NASCAR race car to the 25th annual Soirée Suisse at the Embassy of Switzerland in Washington, with NASCAR driver David Ragan on hand. [TBD – one line on how it landed and who came through.]'),
         ]),
         Blank(),
         ImageSlot('[IMAGE TBD]'),
         Caption('[Caption TBD]'),
         Blank(),
 
-        // ── ABB in the News ─────────────────────────────────────────
+        // ── IV. News ────────────────────────────────────────────────
         Label('[ABB in the News]'),
         Bullet([
           T('September 2026 | Bloomberg: '),
