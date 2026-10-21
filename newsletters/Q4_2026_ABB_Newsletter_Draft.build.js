@@ -97,11 +97,15 @@ const doc = new Document({
             'joined a roundtable hosted by ABB and the National Association of Manufacturers',
             'https://www.energy.senate.gov/newsroom/press/heinrich-meets-with-new-mexicans-to-discuss-how-landmark-bipartisan-legislation-will-lower-costs-create-jobs-hold-data-centers-accountable/'
           ),
-          T(', then walked the floor through five stations of ABB products. He was making the case for the Bipartisan American Affordability and Jobs Act of 2026, which he introduced with Senators Lee, Capito, and Whitehouse. The bill speeds federal review of energy projects and requires data centers to pay for their own grid upgrades.'),
+          T(' and walked the floor where he could pick up the hardware and see how it gets built. During the visit he made the case for the Bipartisan American Affordability and Jobs Act of 2026, which he introduced with Senators Lee, Capito, and Whitehouse. “We need permitting reform to put more electrons on the grid,” Heinrich said. “It results in more jobs.”'),
         ]),
         Blank(),
         P([
-          T('“We need permitting reform to put more electrons on the grid,” Heinrich said. “It results in more jobs.”'),
+          T('That hardware is the connection point itself. Albuquerque builds Elastimold separable connectors – the plug-in joints that tie underground cable into transformers and switchgear on medium-voltage systems – along with terminations, splices, grounding devices, and surge arresters. The site also makes Fisher Pierce faulted circuit indicators and sensors, which tell a utility where a fault is instead of leaving crews to search the line.'),
+        ]),
+        Blank(),
+        P([
+          T('Every new data center, factory, and EV depot reaches the grid through equipment like this. It is where new load physically meets the distribution system, and where an outage either spreads or stops. The electrons Heinrich wants on the grid run through parts built in Albuquerque.'),
         ]),
         Blank(),
         P([
