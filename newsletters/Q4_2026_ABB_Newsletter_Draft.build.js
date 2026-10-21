@@ -90,34 +90,46 @@ const doc = new Document({
         ]),
         Blank(),
 
-        // ── I. Building the grid here: Albuquerque + Senatobia ──────
+        // ── I. Building the grid here ───────────────────────────────
         Label('[Note from ABB Team]'),
         P([
-          T('On October 12, Senator Martin Heinrich came to ABB’s Elastimold plant in Albuquerque. The Ranking Member of the Senate Energy and Natural Resources Committee '),
+          T('The hardest problem on the American grid right now is not building the equipment. It is getting permission to connect it. By the sponsors’ own accounting, 83% of the projects waiting in the federal interconnection queue are clean energy – power that exists on paper and nowhere else.'),
+        ]),
+        Blank(),
+        P([
+          T('That is the problem Senator Martin Heinrich came to Albuquerque to talk about on October 12. The Ranking Member of the Senate Energy and Natural Resources Committee '),
           Link(
             'joined a roundtable hosted by ABB and the National Association of Manufacturers',
             'https://www.energy.senate.gov/newsroom/press/heinrich-meets-with-new-mexicans-to-discuss-how-landmark-bipartisan-legislation-will-lower-costs-create-jobs-hold-data-centers-accountable/'
           ),
-          T(' and walked the floor – five stations where he could pick up the hardware and see how it gets built. “We need permitting reform to put more electrons on the grid,” Heinrich said. “It results in more jobs.”'),
+          T(' at ABB’s Elastimold plant, then walked the floor – five stations where he could pick up the hardware and see how it gets made. He was making the case for the Bipartisan American Affordability and Jobs Act of 2026, which he introduced with Senators Lee, Capito, and Whitehouse. The bill speeds federal review of energy projects and requires data centers to pay for their own grid upgrades and their share of the grid they plug into.'),
         ]),
         Blank(),
         P([
-          T('He was there to make the case for the Bipartisan American Affordability and Jobs Act of 2026, which he introduced with Senators Lee, Capito, and Whitehouse. The bill speeds federal review of energy projects, requires data centers to pay for their own grid upgrades and their share of the existing grid, and targets an interconnection queue where, by the sponsors’ accounting, 83% of the projects waiting are clean energy. “How do we create a faster process, not lower the bar on standards,” as Heinrich put it. The plant was the argument: Elastimold cable accessories and Fisher Pierce circuit solutions are the hardware that connects what the queue is holding up.'),
+          T('“We need permitting reform to put more electrons on the grid,” Heinrich said. “It results in more jobs.” On the balance the bill is trying to strike: “How do we create a faster process, not lower the bar on standards.”'),
         ]),
         Blank(),
         P([
-          T('Two days later in Senatobia, Mississippi, ABB marked ten years at its circuit breaker factory and '),
+          T('The plant was the argument. Elastimold cable accessories and Fisher Pierce circuit solutions are the hardware that connects what the queue is holding up, and they are made in Albuquerque.'),
+        ]),
+        Blank(),
+        P([
+          T('Two days later, ABB made the same case in Mississippi with a ribbon. On October 14, the company marked ten years at its Senatobia circuit breaker factory and '),
           Link(
-            'cut the ribbon on a $40 million expansion that doubles the site’s footprint',
+            'opened a $40 million expansion',
             'https://new.abb.com/news/detail/139398/engineered-for-america-senatobia-a-decade-of-helping-u-s-industries-outrun'
           ),
-          T(' and adds about 200 jobs. Governor Tate Reeves, Congressman Trent Kelly, Mayor Greg Graves, and Swiss Consul General Rolf Ott all came on October 14. Kelly took a private tour and met with senior staff and with workers on the line. The project adds automated production lines, new technology and quality controls, employee training, and renovations to the existing plant – at a site that has been building circuit breakers in Mississippi, rather than importing them, since 2016.'),
+          T(' that doubles the site’s footprint and adds about 200 jobs. Governor Tate Reeves, Congressman Trent Kelly, Mayor Greg Graves, and Swiss Consul General Rolf Ott all came. Kelly took a private tour and met with senior staff and with workers on the line. The expansion brings automated production lines, new technology and quality controls, employee training, and renovations to the existing plant.'),
         ]),
         Blank(),
         P([
-          T('The day before, ABB hosted more than 60 U.S. customers in Oxford, who came through the plant to see the new SACE Emax 3 air circuit breaker. NEMA President and CEO Debra Phillips and Consul General Ott filmed a '),
+          T('The day before, more than 60 U.S. customers gathered in Oxford and came through the plant to see the new SACE Emax 3 air circuit breaker. NEMA President and CEO Debra Phillips and Consul General Ott filmed a '),
           T('Watts Brewing', { italics: true }),
-          T(' segment on site, over sweet tea. ABB also donated $5,000 to the STEM program at Northwest Mississippi Community College, whose main campus sits in Senatobia.'),
+          T(' segment on site, over sweet tea. ABB also donated $5,000 to the STEM program at Northwest Mississippi Community College, whose main campus is in Senatobia.'),
+        ]),
+        Blank(),
+        P([
+          T('Senatobia has been building circuit breakers in Mississippi, rather than importing them, since 2016. Ten years on, the case for building here is no longer a projection. It is a payroll.'),
         ]),
         Blank(),
         ImageSlot('[IMAGE TBD]'),
@@ -132,15 +144,19 @@ const doc = new Document({
 
         Head('Powering Growth: Where the Demand Is Coming From'),
         P([
-          T('On September 15, ABB exhibited at the Congressional Grid Innovation Expo in the Rayburn House Office Building, hosted by NEMA, the GridWise Alliance, and the American Critical Minerals Association in conjunction with the House Grid Innovation Caucus. The premise of the morning was a number: electric load demand is projected to rise 55% by 2050, and the exhibits were there to show Members and staff what the technology answering it actually looks like.'),
+          T('Every forecast for American electricity now points the same way, and the argument has stopped being about whether demand rises. Electric load is projected to climb 55% by 2050. The open question is what gets built, and how fast it can be connected.'),
         ]),
         Blank(),
         P([
-          T('A week later, ABB took the same question to Climate Week NYC. In his opening keynote, International Energy Agency Executive Director Fatih Birol set out a “35 by 35” target – lifting electricity from just over 20% of final energy demand today to 35% by 2035. “35 by 35 will be the real target,” he said. Demand is rising across every sector at once, and the fastest capacity available is the efficiency already sitting in installed equipment.'),
+          T('On September 15, ABB exhibited at the Congressional Grid Innovation Expo in the Rayburn House Office Building, hosted by NEMA, the GridWise Alliance, and the American Critical Minerals Association in conjunction with the House Grid Innovation Caucus. It is a morning built to put the technology answering that number in front of the Members and staff who will write the rules around it.'),
         ]),
         Blank(),
         P([
-          T('That is the argument ABB brought to both rooms, and it is the one Brandon Spencer took to Bloomberg from New York that week – below.'),
+          T('A week later ABB carried the same question to Climate Week NYC, where Cody Taylor, ABB’s Vice President and Group Head of Government Relations and Public Affairs, told New York policymakers that a far larger share of the economy needs to be electrified – and named the two things that get it there. Modernize the grid: flexibility, digital capability, resilience. Then take demand out of industry, so the capacity freed up can go to growth somewhere else. ABB builds for both ends of that, from microgrids, digital substations, and energy storage to high-efficiency motors and drives.'),
+        ]),
+        Blank(),
+        P([
+          T('His point to the room was that none of this is waiting on invention. The technology is ready to scale now, which is why ABB supports the COP31 goal of electrifying 35% of the economy by 2035. Brandon Spencer made the same argument on television that week, below.'),
         ]),
         Blank(),
         ImageSlot('[IMAGE TBD]'),
@@ -150,7 +166,7 @@ const doc = new Document({
         // ── III. Soirée Suisse ──────────────────────────────────────
         Head('A Race Car at the Swiss Embassy'),
         P([
-          T('On September 16, ABB brought a NASCAR race car to the 25th annual Soirée Suisse at the Embassy of Switzerland in Washington, with NASCAR driver David Ragan on hand.'),
+          T('On September 16, ABB brought a NASCAR race car to the 25th annual Soirée Suisse at the Embassy of Switzerland in Washington, with driver David Ragan on hand. A race car is an unusual way to make an argument about electrification, which is precisely why it works in a room full of people who have heard that argument made every other way.'),
         ]),
         Blank(),
         ImageSlot('[IMAGE TBD]'),
